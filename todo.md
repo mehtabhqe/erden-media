@@ -72,3 +72,8 @@
 - [x] Add a success-path test proving public inquiry submission reaches the database helper and private inquiries reads expose the submitted record shape.
 - [x] Verify the new publicInquiries table exists and save the functional ERDEN MEDIA checkpoint after final validation.
 - [x] Save and publish a new checkpoint after the final inquiry-flow validation and functional ERDEN MEDIA website pass.
+- [x] Audit Talk to us and Start a conversation CTA destinations across the public site.
+- [x] Connect all conversation CTAs to the database-backed inquiry form with service-aware prefill.
+- [x] Verify CTA routes and publish a fresh ERDEN MEDIA checkpoint.
+- [x] Save and publish a fresh checkpoint after the CTA-link update and verification.
+- [ ] Save and publish a fresh checkpoint after the CTA-link update and desktop/mobile verification.
