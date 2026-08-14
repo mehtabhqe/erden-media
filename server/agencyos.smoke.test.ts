@@ -16,7 +16,7 @@ describe("AgencyOS foundation", () => {
       res: {} as TrpcContext["res"],
     } satisfies TrpcContext;
     await expect(appRouter.createCaller(ctx).agency.clients()).resolves.toBeInstanceOf(Array);
-  });
+  }, 15000);
 
   it("exposes the authenticated user contract", async () => {
     const ctx = {

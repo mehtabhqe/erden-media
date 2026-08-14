@@ -52,3 +52,8 @@
 - [x] Verify the rewritten media-agency public pages at desktop width after the latest copy and navigation changes.
 - [x] Re-check private desk protection after the public-site rewrite and save a fresh checkpoint.
 - [x] Save a fresh checkpoint after the media-agency public-site rewrite and verification.
+- [x] Align the public footer, hero copy, and section labels with the new ERDEN MEDIA brand name.
+- [x] Verify the ERDEN MEDIA homepage and save a fresh checkpoint.
+- [x] Update the remaining public footer copyright text to ERDEN MEDIA.
+- [x] Re-verify the ERDEN MEDIA homepage after the footer cleanup.
+- [x] Save a new checkpoint after the final ERDEN MEDIA branding changes.
