@@ -83,3 +83,14 @@
 - [x] Prepare Vercel-compatible build and runtime configuration for the public site and private workspace.
 - [x] Validate the MongoDB Atlas connection, public inquiry validation path, and protected inbox contract without exposing secrets.
 - [x] Prepare the final Vercel/MongoDB setup package and request the required user values.
+- [ ] Document the GitHub repository export and Vercel deployment architecture.
+- [ ] Confirm serverless backend, MongoDB Atlas, OAuth, and environment-variable responsibilities.
+- [ ] Prepare a repository-ready deployment package and final setup instructions.
+- [ ] Confirm GitHub access for `mehtabhqe/erden-media` and public repository scope.
+- [ ] Prepare the public repository export and Vercel/MongoDB deployment configuration.
+- [ ] Validate the full public site, serverless backend, and inquiry database path.
+- [ ] Deliver the repository URL or ready-to-push package and exact Vercel setup instructions.
+- [ ] Verify the connected GitHub repository and current branch.
+- [ ] Push the latest ERDEN MEDIA code and Vercel/MongoDB configuration.
+- [ ] Configure or verify Vercel deployment and production environment variables.
+- [ ] Validate the deployed public site, serverless backend, and inquiry workflow.
