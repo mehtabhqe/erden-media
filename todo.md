@@ -100,4 +100,4 @@
 - [ ] Trigger and validate a production deployment, including the public site and inquiry API.
 - [x] Fix Vercel output-directory mismatch: Vite was generating `client/dist/public`; `build:vercel` now generates the repository-root `dist/public` expected by Vercel.
 - [x] Re-run Vercel-compatible build and verify `dist/public` plus bundled API output are generated.
-- [ ] Commit and push the Vercel configuration fix for redeployment.
+- [x] Commit and push the Vercel configuration fix for redeployment.
