@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { useLocation } from "wouter";
+import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import {
   ArrowDownRight,
@@ -82,11 +84,14 @@ const approvalItems = [
 ];
 
 export default function Home() {
+
+  const [, setLocation] = useLocation();
   const [activeNav, setActiveNav] = useState("Dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [period, setPeriod] = useState("This month");
   const [approved, setApproved] = useState<string[]>([]);
+  const summaryQuery = trpc.agency.summary.useQuery();
 
   const filteredClients = useMemo(
     () => clientRows.filter((client) => client.name.toLowerCase().includes(query.toLowerCase())),
@@ -96,7 +101,9 @@ export default function Home() {
   const activateNav = (label: string) => {
     setActiveNav(label);
     setSidebarOpen(false);
-    if (label !== "Dashboard") toast(`${label} module is queued for the next build.`);
+    const routeMap: Record<string, string> = { Dashboard: "/desk", CRM: "/crm", Clients: "/clients", Campaigns: "/campaigns", Social: "/social", Content: "/content", Tasks: "/tasks", Calendar: "/calendar", "PR & Media": "/pr-media", Influencers: "/influencers", Analytics: "/analytics", Reports: "/reports" };
+    if (routeMap[label]) setLocation(routeMap[label]);
+    else toast(`${label} is on the next operating pass.`);
   };
 
   const markApproved = (title: string) => {
@@ -167,16 +174,19 @@ export default function Home() {
             </div>
             <div className="hero-aside">
               <div className="hero-aside-label">Network pulse</div>
-              <div className="pulse-row"><span className="pulse-number">24</span><span className="pulse-text">active workstreams<br /><b>+4 since last Monday</b></span></div>
+              <div className="pulse-row"><span className="pulse-number">{summaryQuery.data?.clients ?? 24}</span><span className="pulse-text">active workstreams<br /><b>{summaryQuery.isLoading ? "syncing workspace" : summaryQuery.isError ? "using last view" : `${summaryQuery.data?.openTasks ?? 0} open tasks · ${summaryQuery.data?.outstandingInvoices ?? 0} invoices`}</b></span></div>
               <div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
             </div>
           </section>
 
+          {summaryQuery.isError && <div className="desk-query-state desk-query-state--error">Shared workspace data is temporarily unavailable. Showing the last available desk view.</div>}
+          {summaryQuery.isLoading && <div className="desk-query-state desk-query-state--loading">Syncing the shared workspace…</div>}
+          {summaryQuery.data?.isEmpty && <div className="desk-query-state desk-query-state--empty">Your shared workspace is empty. Add a client or create the first record to turn the desk into a live operating view.</div>}
           <section className="signal-grid" aria-label="Agency metrics">
-            <MetricCard index="01" label="Active clients" value="24" delta="+3" context="vs. last month" icon={<BriefcaseBusiness size={17} />} tone="orange" />
-            <MetricCard index="02" label="Active campaigns" value="11" delta="+2" context="in motion now" icon={<Target size={17} />} tone="blue" />
-            <MetricCard index="03" label="Awaiting approval" value="07" delta="3 due today" context="needs a nudge" icon={<Clock3 size={17} />} tone="lime" />
-            <MetricCard index="04" label="This month revenue" value="₹8.4L" delta="+18.2%" context="vs. last month" icon={<WalletCards size={17} />} tone="ink" />
+            <MetricCard index="01" label="Active clients" value={String(summaryQuery.data?.clients ?? 24)} delta="+3" context="vs. last month" icon={<BriefcaseBusiness size={17} />} tone="orange" />
+            <MetricCard index="02" label="Active campaigns" value={String(summaryQuery.data?.campaigns ?? 11)} delta="+2" context="in motion now" icon={<Target size={17} />} tone="blue" />
+            <MetricCard index="03" label="Awaiting approval" value={String(summaryQuery.data?.awaitingApproval ?? 7).padStart(2, "0")} delta="3 due today" context="needs a nudge" icon={<Clock3 size={17} />} tone="lime" />
+            <MetricCard index="04" label="Paid revenue" value={`₹${((summaryQuery.data?.revenue ?? 0) / 1000).toFixed(0)}K`} delta="live" context="from paid invoices" icon={<WalletCards size={17} />} tone="ink" />
           </section>
 
           <section className="workspace-grid">

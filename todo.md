@@ -1,0 +1,25 @@
+# AgencyOS Expansion Checklist
+
+- [x] Read the full-stack project guidance and map the MVP data domains.
+- [x] Upgrade the project to backend, database, and user foundations.
+- [x] Define shared data types for clients, campaigns, content approvals, tasks, media outreach, influencers, reports, and invoices.
+- [ ] Add shared navigation and route-level page shells for the core modules.
+- [ ] Implement clients, campaigns, content approvals, PR/media, influencers, tasks, calendar, reports, invoices, files, messages, and settings views.
+- [ ] Connect dashboard metrics and page summaries to shared persisted state.
+- [ ] Add functional create/update flows for core records and approval/task actions.
+- [x] Validate responsive layouts, loading/empty/error states, and cross-page navigation.
+- [ ] Save a checkpoint and deliver the connected platform.
+- [x] Inspect dadengroup.in and document the minimal visual cues to carry into AgencyOS.
+- [x] Simplify the global AgencyOS shell, color palette, borders, shadows, and typography.
+- [x] Refine the dashboard and connected module pages to match the minimal reference direction.
+- [x] Verify responsive layouts and save the minimal redesign checkpoint.
+- [x] Map dadengroup.in's visible page structure and navigation into an AgencyOS-specific sitemap.
+- [x] Translate the reference site's section hierarchy and content patterns into AgencyOS copy without copying unrelated brand claims.
+- [x] Implement all agreed reference-inspired page shells and connect them to the existing operational modules.
+- [x] Add explicit loading, empty, and error states to tRPC-driven desk and module pages.
+- [x] Restyle the /desk dashboard and module pages to use the same minimal visual system as the public site.
+- [x] Capture post-redesign desktop and mobile verification and save a fresh checkpoint.
+- [x] Wire the /desk dashboard summary to shared tRPC data with visible loading, empty, and error states.
+- [x] Save the fresh minimal redesign checkpoint after the desk data-state fix.
+- [x] Wire revenue, open tasks, and outstanding invoices into the /desk summary view without hardcoded summary values.
+- [x] Add an explicit empty-workspace state when the shared AgencyOS summary has zero records.
