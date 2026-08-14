@@ -77,3 +77,9 @@
 - [x] Verify CTA routes and publish a fresh ERDEN MEDIA checkpoint.
 - [x] Save and publish a fresh checkpoint after the CTA-link update and verification.
 - [x] Save and publish a fresh checkpoint after the CTA-link update and desktop/mobile verification.
+- [x] Audit the current MySQL/Drizzle persistence and Vercel deployment shape.
+- [x] Define a MongoDB-compatible model for public inquiries and the private inquiry inbox used by the Vercel deployment.
+- [x] Isolate the public inquiry data path behind MongoDB persistence and secure environment configuration; keep the existing Manus workspace data layer as a compatibility fallback.
+- [x] Prepare Vercel-compatible build and runtime configuration for the public site and private workspace.
+- [x] Validate the MongoDB Atlas connection, public inquiry validation path, and protected inbox contract without exposing secrets.
+- [x] Prepare the final Vercel/MongoDB setup package and request the required user values.

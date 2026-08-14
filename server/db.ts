@@ -2,6 +2,7 @@ import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, calendarEvents, campaigns, clients, contentItems, files, influencers, invoices, mediaContacts, messages, publicInquiries, reports, tasks, users, workspaceSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import { createMongoInquiry, listMongoInquiries } from './mongo';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -214,6 +215,16 @@ export async function getWorkspaceSettings() {
 }
 
 export async function createPublicInquiry(input: typeof publicInquiries.$inferInsert) {
+  if (process.env.MONGODB_URI) {
+    return createMongoInquiry({
+      name: input.name,
+      email: input.email,
+      company: input.company ?? null,
+      service: input.service,
+      message: input.message,
+      source: input.source ?? "contact",
+    });
+  }
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   const result = await db.insert(publicInquiries).values(input);
@@ -221,6 +232,7 @@ export async function createPublicInquiry(input: typeof publicInquiries.$inferIn
 }
 
 export async function listPublicInquiries() {
+  if (process.env.MONGODB_URI) return listMongoInquiries();
   const db = await getDb();
   return db ? db.select().from(publicInquiries).orderBy(desc(publicInquiries.createdAt)) : [];
 }
