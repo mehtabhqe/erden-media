@@ -76,4 +76,4 @@
 - [x] Connect all conversation CTAs to the database-backed inquiry form with service-aware prefill.
 - [x] Verify CTA routes and publish a fresh ERDEN MEDIA checkpoint.
 - [x] Save and publish a fresh checkpoint after the CTA-link update and verification.
-- [ ] Save and publish a fresh checkpoint after the CTA-link update and desktop/mobile verification.
+- [x] Save and publish a fresh checkpoint after the CTA-link update and desktop/mobile verification.
