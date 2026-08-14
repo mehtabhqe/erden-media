@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ModulePage from "./pages/ModulePage";
 import PublicSite from "./pages/PublicSite";
+import UtilityPage from "./pages/UtilityPage";
 
 function Router() {
   return <Switch>
@@ -31,6 +32,9 @@ function Router() {
     <Route path="/analytics" component={() => <ModulePage module="analytics" />} />
     <Route path="/reports" component={() => <ModulePage module="reports" />} />
     <Route path="/invoices" component={() => <ModulePage module="invoices" />} />
+    <Route path="/files" component={() => <UtilityPage page="files" />} />
+    <Route path="/messages" component={() => <UtilityPage page="messages" />} />
+    <Route path="/settings" component={() => <UtilityPage page="settings" />} />
     <Route component={() => <PublicSite page="about" />} />
   </Switch>;
 }

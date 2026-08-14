@@ -224,3 +224,7 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 
 .desk-query-state { max-width: 1420px; margin: -18px 0 22px; padding: 10px 13px; border: 1px solid #d9dce0; font-size: 11px; }.desk-query-state--loading { color: var(--cobalt); background: #f2f6ff; }.desk-query-state--error { color: #8d4b3f; background: #fff3ef; }
 .desk-query-state--empty { color: #4c5963; background: #f4f6f8; }
+
+.module-create-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 14px; background: #f4f6f8; border-bottom: 1px solid #101112; }.module-create-form > div { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; font: 700 13px "Space Grotesk"; }.module-create-form > div button { border: 0; background: transparent; text-decoration: underline; font-size: 11px; }.module-create-form input { min-width: 0; padding: 10px; border: 1px solid #cfd4d9; background: white; font-size: 12px; }.module-create-form .quick-add { justify-content: center; }.module-create-form .form-error { grid-column: 1 / -1; color: #8d4b3f; font-size: 11px; }.module-create-form .quick-add { display: inline-flex; align-items: center; gap: 7px; color: white; background: var(--cobalt); border: 1px solid #101112; padding: 10px 12px; }
+@media (max-width: 720px) { .module-create-form { grid-template-columns: 1fr; } }
+.module-create-form .field-error { color: #8d4b3f; font-size: 10px; margin-top: -5px; }

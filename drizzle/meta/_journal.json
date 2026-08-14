@@ -8,6 +8,13 @@
       "when": 1786703276750,
       "tag": "0000_groovy_chamber",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786704148954,
+      "tag": "0001_tearful_champions",
+      "breakpoints": true
     }
   ]
 }

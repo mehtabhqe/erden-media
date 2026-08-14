@@ -1,6 +1,6 @@
 import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, campaigns, clients, contentItems, influencers, invoices, mediaContacts, reports, tasks, users } from "../drizzle/schema";
+import { InsertUser, calendarEvents, campaigns, clients, contentItems, files, influencers, invoices, mediaContacts, messages, reports, tasks, users, workspaceSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -102,6 +102,48 @@ export async function createClient(input: typeof clients.$inferInsert) {
   return { id: Number(result[0].insertId), ...input };
 }
 
+export async function createCampaign(input: typeof campaigns.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(campaigns).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function createMediaContact(input: typeof mediaContacts.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(mediaContacts).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function createInfluencer(input: typeof influencers.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(influencers).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function createReport(input: typeof reports.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(reports).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function createInvoice(input: typeof invoices.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(invoices).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function createCalendarEvent(input: typeof calendarEvents.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(calendarEvents).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
 export async function listCampaigns() {
   const db = await getDb();
   return db ? db.select().from(campaigns).orderBy(desc(campaigns.createdAt)) : [];
@@ -149,5 +191,25 @@ export async function listReports() {
 export async function listInvoices() {
   const db = await getDb();
   return db ? db.select().from(invoices).orderBy(desc(invoices.createdAt)) : [];
+}
+
+export async function listCalendarEvents() {
+  const db = await getDb();
+  return db ? db.select().from(calendarEvents).orderBy(desc(calendarEvents.startsAt)) : [];
+}
+
+export async function listFiles() {
+  const db = await getDb();
+  return db ? db.select().from(files).orderBy(desc(files.createdAt)) : [];
+}
+
+export async function listMessages() {
+  const db = await getDb();
+  return db ? db.select().from(messages).orderBy(desc(messages.createdAt)) : [];
+}
+
+export async function getWorkspaceSettings() {
+  const db = await getDb();
+  return db ? db.select().from(workspaceSettings).limit(1) : [];
 }
 

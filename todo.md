@@ -3,12 +3,12 @@
 - [x] Read the full-stack project guidance and map the MVP data domains.
 - [x] Upgrade the project to backend, database, and user foundations.
 - [x] Define shared data types for clients, campaigns, content approvals, tasks, media outreach, influencers, reports, and invoices.
-- [ ] Add shared navigation and route-level page shells for the core modules.
-- [ ] Implement clients, campaigns, content approvals, PR/media, influencers, tasks, calendar, reports, invoices, files, messages, and settings views.
-- [ ] Connect dashboard metrics and page summaries to shared persisted state.
-- [ ] Add functional create/update flows for core records and approval/task actions.
+- [x] Add shared navigation and route-level page shells for the core modules.
+- [x] Implement clients, campaigns, content approvals, PR/media, influencers, tasks, calendar, reports, invoices, files, messages, and settings views.
+- [x] Connect dashboard metrics and page summaries to shared persisted state.
+- [x] Add functional create/update flows for core records and approval/task actions.
 - [x] Validate responsive layouts, loading/empty/error states, and cross-page navigation.
-- [ ] Save a checkpoint and deliver the connected platform.
+- [x] Save a checkpoint and deliver the connected platform.
 - [x] Inspect dadengroup.in and document the minimal visual cues to carry into AgencyOS.
 - [x] Simplify the global AgencyOS shell, color palette, borders, shadows, and typography.
 - [x] Refine the dashboard and connected module pages to match the minimal reference direction.
@@ -23,3 +23,15 @@
 - [x] Save the fresh minimal redesign checkpoint after the desk data-state fix.
 - [x] Wire revenue, open tasks, and outstanding invoices into the /desk summary view without hardcoded summary values.
 - [x] Add an explicit empty-workspace state when the shared AgencyOS summary has zero records.
+- [x] Replace hardcoded fallback rows with persisted data for module views where database tables exist.
+- [x] Add persisted data models and procedures for calendar, files, messages, and settings summaries.
+- [x] Add validated create/update flows for campaigns, PR/media, influencers, reports, invoices, and calendar records.
+- [x] Remove demo fallback rows from DB-backed module pages and show true empty states.
+- [x] Add validated tRPC mutations and UI entry flows for campaigns, media contacts, influencers, reports, invoices, and calendar records.
+- [x] Save a final checkpoint after these last connected-workspace changes.
+- [x] Replace prompt-based create flows with validated forms for campaigns, media contacts, influencers, reports, invoices, and calendar events.
+- [x] Add client-side field validation and visible form error states before mutation submission.
+- [x] Expand create forms with explicit fields for campaign type, media beat, influencer platform and audience, report period, invoice details, and calendar date/time.
+- [x] Add field-level validation and inline mutation errors for every create form.
+- [x] Save a final checkpoint after the complete form pass.
+- [x] Add field-level validation and inline error rendering for client category and lead initials, while keeping mutation errors visible inside the form.

@@ -144,8 +144,9 @@ export default function Home() {
         </nav>
 
         <div className="rail-footer">
-          <button className="nav-item" onClick={() => toast("Messages module is queued for the next build.")}><Headphones size={16} /><span>Messages</span><span className="status-dot" /></button>
-          <button className="nav-item" onClick={() => toast("Settings module is queued for the next build.")}><Settings2 size={16} /><span>Settings</span></button>
+          <button className="nav-item" onClick={() => setLocation("/messages")}><Headphones size={16} /><span>Messages</span><span className="status-dot" /></button>
+          <button className="nav-item" onClick={() => setLocation("/files")}><FolderOpen size={16} /><span>Files</span></button>
+          <button className="nav-item" onClick={() => setLocation("/settings")}><Settings2 size={16} /><span>Settings</span></button>
           <div className="team-card">
             <div className="avatar avatar--orange">RS</div>
             <div><strong>Rhea Shah</strong><small>Super Admin</small></div>

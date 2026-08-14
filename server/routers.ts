@@ -3,7 +3,7 @@ import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createClient, listCampaigns, listClients, listContentItems, listInfluencers, listInvoices, listMediaContacts, listReports, listTasks, updateContentStatus, updateTaskStatus } from "./db";
+import { createCalendarEvent, createCampaign, createClient, createInfluencer, createInvoice, createMediaContact, createReport, getWorkspaceSettings, listCalendarEvents, listCampaigns, listClients, listContentItems, listFiles, listInfluencers, listInvoices, listMediaContacts, listMessages, listReports, listTasks, updateContentStatus, updateTaskStatus } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -42,6 +42,10 @@ export const appRouter = router({
     influencers: publicProcedure.query(() => listInfluencers()),
     reports: publicProcedure.query(() => listReports()),
     invoices: publicProcedure.query(() => listInvoices()),
+    calendar: publicProcedure.query(() => listCalendarEvents()),
+    files: publicProcedure.query(() => listFiles()),
+    messages: publicProcedure.query(() => listMessages()),
+    settings: publicProcedure.query(() => getWorkspaceSettings()),
     createClient: protectedProcedure.input(z.object({
       name: z.string().min(2),
       category: z.string().min(2),
@@ -50,6 +54,12 @@ export const appRouter = router({
       website: z.string().url().optional(),
       notes: z.string().optional(),
     })).mutation(({ input }) => createClient({ ...input, health: 50, status: "on_track", createdAt: Date.now(), updatedAt: Date.now() })),
+    createCampaign: protectedProcedure.input(z.object({ clientId: z.number().int().positive(), name: z.string().min(2), type: z.string().min(2) })).mutation(({ input }) => createCampaign({ ...input, status: "draft", progress: 0, createdAt: Date.now() })),
+    createMediaContact: protectedProcedure.input(z.object({ name: z.string().min(2), outlet: z.string().min(2), beat: z.string().optional() })).mutation(({ input }) => createMediaContact({ ...input, status: "not_contacted" })),
+    createInfluencer: protectedProcedure.input(z.object({ name: z.string().min(2), handle: z.string().min(2), platform: z.string().min(2), audience: z.number().int().nonnegative() })).mutation(({ input }) => createInfluencer({ ...input, status: "prospect" })),
+    createReport: protectedProcedure.input(z.object({ clientId: z.number().int().positive(), title: z.string().min(2), period: z.string().min(2) })).mutation(({ input }) => createReport({ ...input, status: "draft", createdAt: Date.now() })),
+    createInvoice: protectedProcedure.input(z.object({ clientId: z.number().int().positive(), number: z.string().min(2), amount: z.number().int().positive() })).mutation(({ input }) => createInvoice({ ...input, currency: "INR", status: "open", createdAt: Date.now() })),
+    createCalendarEvent: protectedProcedure.input(z.object({ title: z.string().min(2), eventType: z.string().min(2), startsAt: z.number().int().positive() })).mutation(({ input }) => createCalendarEvent({ ...input, status: "planned" })),
     approveContent: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => updateContentStatus(input.id, "approved")),
     completeTask: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => updateTaskStatus(input.id, "done")),
   }),

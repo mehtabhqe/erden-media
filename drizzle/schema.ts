@@ -88,6 +88,41 @@ export const reports = mysqlTable("reports", {
   createdAt: bigint("createdAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
 });
 
+export const calendarEvents = mysqlTable("calendarEvents", {
+  id: int("id").autoincrement().primaryKey(),
+  clientId: int("clientId"),
+  title: varchar("title", { length: 180 }).notNull(),
+  eventType: varchar("eventType", { length: 60 }).notNull(),
+  startsAt: bigint("startsAt", { mode: "number" }).notNull(),
+  status: mysqlEnum("status", ["planned", "in_progress", "done"]).default("planned").notNull(),
+});
+
+export const files = mysqlTable("files", {
+  id: int("id").autoincrement().primaryKey(),
+  clientId: int("clientId"),
+  name: varchar("name", { length: 180 }).notNull(),
+  kind: varchar("kind", { length: 60 }).notNull(),
+  url: text("url"),
+  createdAt: bigint("createdAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
+});
+
+export const messages = mysqlTable("messages", {
+  id: int("id").autoincrement().primaryKey(),
+  clientId: int("clientId"),
+  subject: varchar("subject", { length: 180 }).notNull(),
+  channel: varchar("channel", { length: 40 }).notNull(),
+  status: mysqlEnum("status", ["open", "waiting", "closed"]).default("open").notNull(),
+  createdAt: bigint("createdAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
+});
+
+export const workspaceSettings = mysqlTable("workspaceSettings", {
+  id: int("id").autoincrement().primaryKey(),
+  workspaceName: varchar("workspaceName", { length: 160 }).notNull(),
+  defaultCurrency: varchar("defaultCurrency", { length: 8 }).default("INR").notNull(),
+  approvalSlaHours: int("approvalSlaHours").default(48).notNull(),
+  updatedAt: bigint("updatedAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
+});
+
 export const invoices = mysqlTable("invoices", {
   id: int("id").autoincrement().primaryKey(),
   clientId: int("clientId").notNull(),
@@ -107,5 +142,9 @@ export type MediaContact = typeof mediaContacts.$inferSelect;
 export type Influencer = typeof influencers.$inferSelect;
 export type Report = typeof reports.$inferSelect;
 export type Invoice = typeof invoices.$inferSelect;
+export type CalendarEvent = typeof calendarEvents.$inferSelect;
+export type FileRecord = typeof files.$inferSelect;
+export type Message = typeof messages.$inferSelect;
+export type WorkspaceSettings = typeof workspaceSettings.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
