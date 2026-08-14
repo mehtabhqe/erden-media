@@ -90,7 +90,14 @@
 - [ ] Prepare the public repository export and Vercel/MongoDB deployment configuration.
 - [ ] Validate the full public site, serverless backend, and inquiry database path.
 - [ ] Deliver the repository URL or ready-to-push package and exact Vercel setup instructions.
-- [ ] Verify the connected GitHub repository and current branch.
-- [ ] Push the latest ERDEN MEDIA code and Vercel/MongoDB configuration.
+- [x] Verify the connected GitHub repository and current branch.
+- [x] Push the latest ERDEN MEDIA code and Vercel/MongoDB configuration.
 - [ ] Configure or verify Vercel deployment and production environment variables.
 - [ ] Validate the deployed public site, serverless backend, and inquiry workflow.
+- [x] Verify the enabled Vercel integration and target team/project access.
+- [ ] Create or link the Vercel project to `mehtabhqe/erden-media`.
+- [ ] Configure MongoDB Atlas, OAuth, and production environment variables in Vercel.
+- [ ] Trigger and validate a production deployment, including the public site and inquiry API.
+- [x] Fix Vercel output-directory mismatch: Vite was generating `client/dist/public`; `build:vercel` now generates the repository-root `dist/public` expected by Vercel.
+- [x] Re-run Vercel-compatible build and verify `dist/public` plus bundled API output are generated.
+- [ ] Commit and push the Vercel configuration fix for redeployment.
