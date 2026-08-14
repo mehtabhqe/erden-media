@@ -71,4 +71,4 @@
 - [x] Save and publish the completed functional ERDEN MEDIA release.
 - [x] Add a success-path test proving public inquiry submission reaches the database helper and private inquiries reads expose the submitted record shape.
 - [x] Verify the new publicInquiries table exists and save the functional ERDEN MEDIA checkpoint after final validation.
-- [ ] Save and publish a new checkpoint after the final inquiry-flow validation and functional ERDEN MEDIA website pass.
+- [x] Save and publish a new checkpoint after the final inquiry-flow validation and functional ERDEN MEDIA website pass.
