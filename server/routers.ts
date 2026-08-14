@@ -20,7 +20,7 @@ export const appRouter = router({
   }),
 
   agency: router({
-    summary: publicProcedure.query(async () => {
+    summary: protectedProcedure.query(async () => {
       const [clientRows, campaignRows, contentRows, taskRows, invoiceRows] = await Promise.all([
         listClients(), listCampaigns(), listContentItems(), listTasks(), listInvoices(),
       ]);
@@ -34,18 +34,18 @@ export const appRouter = router({
         isEmpty: clientRows.length === 0 && campaignRows.length === 0 && contentRows.length === 0 && taskRows.length === 0 && invoiceRows.length === 0,
       };
     }),
-    clients: publicProcedure.query(() => listClients()),
-    campaigns: publicProcedure.query(() => listCampaigns()),
-    content: publicProcedure.query(() => listContentItems()),
-    tasks: publicProcedure.query(() => listTasks()),
-    media: publicProcedure.query(() => listMediaContacts()),
-    influencers: publicProcedure.query(() => listInfluencers()),
-    reports: publicProcedure.query(() => listReports()),
-    invoices: publicProcedure.query(() => listInvoices()),
-    calendar: publicProcedure.query(() => listCalendarEvents()),
-    files: publicProcedure.query(() => listFiles()),
-    messages: publicProcedure.query(() => listMessages()),
-    settings: publicProcedure.query(() => getWorkspaceSettings()),
+    clients: protectedProcedure.query(() => listClients()),
+    campaigns: protectedProcedure.query(() => listCampaigns()),
+    content: protectedProcedure.query(() => listContentItems()),
+    tasks: protectedProcedure.query(() => listTasks()),
+    media: protectedProcedure.query(() => listMediaContacts()),
+    influencers: protectedProcedure.query(() => listInfluencers()),
+    reports: protectedProcedure.query(() => listReports()),
+    invoices: protectedProcedure.query(() => listInvoices()),
+    calendar: protectedProcedure.query(() => listCalendarEvents()),
+    files: protectedProcedure.query(() => listFiles()),
+    messages: protectedProcedure.query(() => listMessages()),
+    settings: protectedProcedure.query(() => getWorkspaceSettings()),
     createClient: protectedProcedure.input(z.object({
       name: z.string().min(2),
       category: z.string().min(2),

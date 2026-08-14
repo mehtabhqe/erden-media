@@ -35,3 +35,13 @@
 - [x] Add field-level validation and inline mutation errors for every create form.
 - [x] Save a final checkpoint after the complete form pass.
 - [x] Add field-level validation and inline error rendering for client category and lead initials, while keeping mutation errors visible inside the form.
+- [x] Make the public website the default route and remove all public links to the internal dashboard.
+- [x] Protect the internal desk and operational modules behind authenticated access.
+- [x] Create a distinct AgencyOS brand treatment instead of closely mirroring Daden Group.
+- [x] Refine the public site copy and navigation around agency information, blogs, and contact/registration conversion.
+- [x] Verify anonymous public access, authenticated private access, and responsive public pages.
+- [x] Protect internal agency read procedures with authenticated tRPC access, not only client-side route gates.
+- [x] Strengthen the public AgencyOS brand system beyond a single accent color.
+- [x] Re-verify anonymous public browsing, authenticated desk access, and mobile public pages after the privacy refactor.
+- [x] Verify /desk and a protected module route with an authenticated session after the privacy refactor.
+- [x] Add automated coverage proving protected AgencyOS reads reject unauthenticated callers and succeed for authenticated callers.
