@@ -57,3 +57,6 @@
 - [x] Update the remaining public footer copyright text to ERDEN MEDIA.
 - [x] Re-verify the ERDEN MEDIA homepage after the footer cleanup.
 - [x] Save a new checkpoint after the final ERDEN MEDIA branding changes.
+- [x] Add a custom service inquiry container to the ERDEN MEDIA Services page using the existing service-card layout.
+- [x] Verify the Services page and save a fresh checkpoint after the custom-service addition.
+- [x] Save a fresh checkpoint after the custom-service addition and Services-page verification.
