@@ -29,7 +29,7 @@ export default function PublicSite({ page = "home" }: { page?: string }) {
   const title = page === "services" ? "Ideas, identity, and visibility — made to move." : page === "portfolio" ? "Work that gives good brands somewhere to go." : page === "case-studies" ? "The thinking behind the work." : page === "blog" ? "Notes on brands, culture, and being seen." : page === "about" ? "A media agency for people with something to say." : page === "roi" ? "Build a presence that earns its place." : page === "contact" ? "Let’s make your next move visible." : page === "free-audit" ? "Find the gaps in your public presence." : "Build a presence people remember.";
 
   return <div className="public-site">
-    <header className="public-header"><Link href="/" className="public-brand"><span className="public-brand-mark">AO</span><span>ERDEN MEDIA</span></Link><nav className={`public-nav ${menuOpen ? "public-nav--open" : ""}`}>{nav.map(([label, href]) => <Link key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</Link>)}<Link href="/contact" className="public-nav-cta" onClick={() => setMenuOpen(false)}>Start a conversation <ArrowRight size={14} /></Link></nav><button className="public-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></header>
+    <header className="public-header"><Link href="/" className="public-brand"><span className="public-brand-mark">EM</span><span>ERDEN MEDIA</span></Link><nav className={`public-nav ${menuOpen ? "public-nav--open" : ""}`}>{nav.map(([label, href]) => <Link key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</Link>)}<Link href="/contact" className="public-nav-cta" onClick={() => setMenuOpen(false)}>Start a conversation <ArrowRight size={14} /></Link></nav><button className="public-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button></header>
 
     {isHome ? <>
       <section className="public-hero"><div className="public-eyebrow">MEDIA AGENCY · BRAND · SOCIAL · PR</div><h1>Build a presence.<br /><i>Make it matter.</i><br />Be remembered.</h1><p>Erden Media helps ambitious people and brands show up with a sharper identity, stronger content, and the visibility to move the room.</p><div className="public-actions"><Link className="public-button public-button--dark" href="/contact">Start a project <ArrowRight size={15} /></Link><Link className="public-button" href="/services">See what we do <ArrowRight size={15} /></Link></div><div className="public-positioning"><span>OUR APPROACH</span><strong>We connect the story, the look, the content, and the right audience.</strong></div></section>
@@ -44,7 +44,7 @@ export default function PublicSite({ page = "home" }: { page?: string }) {
       <ContactSection />
     </> : <InteriorPage page={page} title={title} />}
 
-    <footer className="public-footer"><div className="public-brand"><span className="public-brand-mark">AO</span><span>ERDEN MEDIA</span></div><div className="footer-links">{nav.slice(0, 5).map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div><span>© 2026 ERDEN MEDIA</span></footer>
+    <footer className="public-footer"><div className="public-brand"><span className="public-brand-mark">EM</span><span>ERDEN MEDIA</span></div><div className="footer-links">{nav.slice(0, 5).map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div><span>© 2026 ERDEN MEDIA</span></footer>
   </div>;
 }
 

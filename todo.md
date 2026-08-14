@@ -60,3 +60,5 @@
 - [x] Add a custom service inquiry container to the ERDEN MEDIA Services page using the existing service-card layout.
 - [x] Verify the Services page and save a fresh checkpoint after the custom-service addition.
 - [x] Save a fresh checkpoint after the custom-service addition and Services-page verification.
+- [x] Verify the ERDEN MEDIA header uses the EM monogram consistently.
+- [x] Run checks, re-verify the homepage, and save a fresh checkpoint after the EM monogram update.
