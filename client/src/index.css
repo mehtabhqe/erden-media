@@ -235,3 +235,14 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .public-site { background: #fff8f2; color: #17191c; background-image: radial-gradient(circle at 12% 18%, rgba(227,93,72,.08) 0 2px, transparent 3px), linear-gradient(135deg, rgba(227,93,72,.06) 1px, transparent 1px); background-size: 28px 28px, 90px 90px; }.public-site .public-header { background: rgba(255,248,242,.94); }.public-site .public-button--dark { background: #17191c; }.public-site .public-brand-mark { background: #e35d48; }.public-site .public-proofline { background: #17191c; }
 
 .interior-card--custom { background: #e35d48; color: #17191c; border-color: #17191c; }.interior-card--custom p { color: rgba(23,25,28,.76); }.interior-card--custom .text-link { color: #17191c; }
+
+.public-contact form select { width: 100%; appearance: none; background: #fffdf8; border: 1px solid #17191c; border-radius: 0; padding: .85rem .9rem; font: inherit; color: #17191c; }
+.public-contact form button:disabled { opacity: .55; cursor: wait; }
+.form-success, .form-error { margin-top: 1.2rem; border-left: 3px solid #e35d48; padding: .9rem 1rem; background: rgba(227,93,72,.12); font-size: .92rem; line-height: 1.45; }
+.form-error { border-left-color: #17191c; background: rgba(23,25,28,.08); }
+.detail-page { max-width: 1180px; }
+.detail-meta { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0 3rem; }
+.detail-meta span { border: 1px solid #17191c; padding: .55rem .75rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+.detail-story { max-width: 720px; border-top: 1px solid #17191c; padding-top: 2rem; }
+.detail-story h2 { font-size: clamp(2rem, 4vw, 4.5rem); line-height: .95; margin: 0 0 1.2rem; }
+.detail-story p { max-width: 62ch; line-height: 1.7; color: #5d6267; }

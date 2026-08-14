@@ -24,8 +24,10 @@ function Router() {
     <Route path="/" component={() => <PublicSite />} />
     <Route path="/desk" component={() => <PrivateRoute><Home /></PrivateRoute>} />
     <Route path="/services" component={() => <PublicSite page="services" />} />
+    <Route path="/portfolio/:slug" component={({ params }: { params: { slug: string } }) => <PublicSite page="portfolio-detail" slug={params.slug} />} />
     <Route path="/portfolio" component={() => <PublicSite page="portfolio" />} />
     <Route path="/case-studies" component={() => <PublicSite page="case-studies" />} />
+    <Route path="/blog/:slug" component={({ params }: { params: { slug: string } }) => <PublicSite page="blog-detail" slug={params.slug} />} />
     <Route path="/blog" component={() => <PublicSite page="blog" />} />
     <Route path="/about" component={() => <PublicSite page="about" />} />
     <Route path="/tools/roi-calculator" component={() => <PublicSite page="roi" />} />
@@ -46,6 +48,7 @@ function Router() {
     <Route path="/files" component={() => <PrivateRoute><UtilityPage page="files" /></PrivateRoute>} />
     <Route path="/messages" component={() => <PrivateRoute><UtilityPage page="messages" /></PrivateRoute>} />
     <Route path="/settings" component={() => <PrivateRoute><UtilityPage page="settings" /></PrivateRoute>} />
+    <Route path="/inquiries" component={() => <PrivateRoute><UtilityPage page="inquiries" /></PrivateRoute>} />
     <Route component={() => <PublicSite page="about" />} />
   </Switch>;
 }

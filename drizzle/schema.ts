@@ -115,6 +115,18 @@ export const messages = mysqlTable("messages", {
   createdAt: bigint("createdAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
 });
 
+export const publicInquiries = mysqlTable("publicInquiries", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 160 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  company: varchar("company", { length: 160 }),
+  service: varchar("service", { length: 120 }).notNull(),
+  message: text("message").notNull(),
+  source: varchar("source", { length: 60 }).default("contact").notNull(),
+  status: mysqlEnum("status", ["new", "in_progress", "closed"]).default("new").notNull(),
+  createdAt: bigint("createdAt", { mode: "number" }).$defaultFn(nowMs).notNull(),
+});
+
 export const workspaceSettings = mysqlTable("workspaceSettings", {
   id: int("id").autoincrement().primaryKey(),
   workspaceName: varchar("workspaceName", { length: 160 }).notNull(),
@@ -146,5 +158,6 @@ export type CalendarEvent = typeof calendarEvents.$inferSelect;
 export type FileRecord = typeof files.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type WorkspaceSettings = typeof workspaceSettings.$inferSelect;
+export type PublicInquiry = typeof publicInquiries.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;

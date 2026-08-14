@@ -3,7 +3,7 @@ import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createCalendarEvent, createCampaign, createClient, createInfluencer, createInvoice, createMediaContact, createReport, getWorkspaceSettings, listCalendarEvents, listCampaigns, listClients, listContentItems, listFiles, listInfluencers, listInvoices, listMediaContacts, listMessages, listReports, listTasks, updateContentStatus, updateTaskStatus } from "./db";
+import { createCalendarEvent, createCampaign, createClient, createInfluencer, createInvoice, createMediaContact, createPublicInquiry, createReport, getWorkspaceSettings, listCalendarEvents, listCampaigns, listClients, listContentItems, listFiles, listInfluencers, listInvoices, listMediaContacts, listMessages, listPublicInquiries, listReports, listTasks, updateContentStatus, updateTaskStatus } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -46,6 +46,7 @@ export const appRouter = router({
     files: protectedProcedure.query(() => listFiles()),
     messages: protectedProcedure.query(() => listMessages()),
     settings: protectedProcedure.query(() => getWorkspaceSettings()),
+    inquiries: protectedProcedure.query(() => listPublicInquiries()),
     createClient: protectedProcedure.input(z.object({
       name: z.string().min(2),
       category: z.string().min(2),
@@ -60,6 +61,7 @@ export const appRouter = router({
     createReport: protectedProcedure.input(z.object({ clientId: z.number().int().positive(), title: z.string().min(2), period: z.string().min(2) })).mutation(({ input }) => createReport({ ...input, status: "draft", createdAt: Date.now() })),
     createInvoice: protectedProcedure.input(z.object({ clientId: z.number().int().positive(), number: z.string().min(2), amount: z.number().int().positive() })).mutation(({ input }) => createInvoice({ ...input, currency: "INR", status: "open", createdAt: Date.now() })),
     createCalendarEvent: protectedProcedure.input(z.object({ title: z.string().min(2), eventType: z.string().min(2), startsAt: z.number().int().positive() })).mutation(({ input }) => createCalendarEvent({ ...input, status: "planned" })),
+    createInquiry: publicProcedure.input(z.object({ name: z.string().min(2).max(160), email: z.string().email(), company: z.string().max(160).optional(), service: z.string().min(2).max(120), message: z.string().min(10).max(5000), source: z.string().max(60).default("contact") })).mutation(({ input }) => createPublicInquiry({ ...input, createdAt: Date.now(), status: "new" })),
     approveContent: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => updateContentStatus(input.id, "approved")),
     completeTask: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ input }) => updateTaskStatus(input.id, "done")),
   }),

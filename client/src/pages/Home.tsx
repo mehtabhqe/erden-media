@@ -20,6 +20,7 @@ import {
   LayoutDashboard,
   LineChart,
   Mail,
+  Inbox,
   Megaphone,
   Menu,
   MoreHorizontal,
@@ -66,6 +67,7 @@ const navGroups = [
       { label: "Influencers", icon: Sparkles },
       { label: "Analytics", icon: LineChart },
       { label: "Reports", icon: FileText },
+      { label: "Inquiries", icon: Inbox },
     ],
   },
 ];
@@ -101,7 +103,7 @@ export default function Home() {
   const activateNav = (label: string) => {
     setActiveNav(label);
     setSidebarOpen(false);
-    const routeMap: Record<string, string> = { Dashboard: "/desk", CRM: "/crm", Clients: "/clients", Campaigns: "/campaigns", Social: "/social", Content: "/content", Tasks: "/tasks", Calendar: "/calendar", "PR & Media": "/pr-media", Influencers: "/influencers", Analytics: "/analytics", Reports: "/reports" };
+    const routeMap: Record<string, string> = { Dashboard: "/desk", CRM: "/crm", Clients: "/clients", Campaigns: "/campaigns", Social: "/social", Content: "/content", Tasks: "/tasks", Calendar: "/calendar", "PR & Media": "/pr-media", Influencers: "/influencers", Analytics: "/analytics", Reports: "/reports", Inquiries: "/inquiries" };
     if (routeMap[label]) setLocation(routeMap[label]);
     else toast(`${label} is on the next operating pass.`);
   };

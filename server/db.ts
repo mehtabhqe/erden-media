@@ -1,6 +1,6 @@
 import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, calendarEvents, campaigns, clients, contentItems, files, influencers, invoices, mediaContacts, messages, reports, tasks, users, workspaceSettings } from "../drizzle/schema";
+import { InsertUser, calendarEvents, campaigns, clients, contentItems, files, influencers, invoices, mediaContacts, messages, publicInquiries, reports, tasks, users, workspaceSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -211,5 +211,17 @@ export async function listMessages() {
 export async function getWorkspaceSettings() {
   const db = await getDb();
   return db ? db.select().from(workspaceSettings).limit(1) : [];
+}
+
+export async function createPublicInquiry(input: typeof publicInquiries.$inferInsert) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(publicInquiries).values(input);
+  return { id: Number(result[0].insertId), ...input };
+}
+
+export async function listPublicInquiries() {
+  const db = await getDb();
+  return db ? db.select().from(publicInquiries).orderBy(desc(publicInquiries.createdAt)) : [];
 }
 

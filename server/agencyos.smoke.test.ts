@@ -18,6 +18,16 @@ describe("AgencyOS foundation", () => {
     await expect(appRouter.createCaller(ctx).agency.clients()).resolves.toBeInstanceOf(Array);
   }, 15000);
 
+  it("blocks the private inquiries inbox for anonymous callers", async () => {
+    const ctx = { user: null, req: {} as TrpcContext["req"], res: {} as TrpcContext["res"] } satisfies TrpcContext;
+    await expect(appRouter.createCaller(ctx).agency.inquiries()).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+  });
+
+  it("validates public inquiry submissions before persistence", async () => {
+    const ctx = { user: null, req: {} as TrpcContext["req"], res: {} as TrpcContext["res"] } satisfies TrpcContext;
+    await expect(appRouter.createCaller(ctx).agency.createInquiry({ name: "A", email: "bad", service: "", message: "short", source: "contact" })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+  });
+
   it("exposes the authenticated user contract", async () => {
     const ctx = {
       user: null,

@@ -62,3 +62,13 @@
 - [x] Save a fresh checkpoint after the custom-service addition and Services-page verification.
 - [x] Verify the ERDEN MEDIA header uses the EM monogram consistently.
 - [x] Run checks, re-verify the homepage, and save a fresh checkpoint after the EM monogram update.
+- [x] Audit all public routes, CTA buttons, portfolio links, blog links, and current inquiry form behavior.
+- [x] Add a persisted public inquiry model, migration, server helpers, and tRPC procedures.
+- [x] Add private lead visibility for ERDEN MEDIA inquiries inside the authenticated workspace.
+- [x] Replace static blog and portfolio placeholders with relevant, working agency content and detail views.
+- [x] Make all public buttons and conversion paths navigate or submit successfully.
+- [x] Add tests and verify the public-to-database inquiry workflow on desktop and mobile.
+- [x] Save and publish the completed functional ERDEN MEDIA release.
+- [x] Add a success-path test proving public inquiry submission reaches the database helper and private inquiries reads expose the submitted record shape.
+- [x] Verify the new publicInquiries table exists and save the functional ERDEN MEDIA checkpoint after final validation.
+- [ ] Save and publish a new checkpoint after the final inquiry-flow validation and functional ERDEN MEDIA website pass.
