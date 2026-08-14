@@ -45,3 +45,10 @@
 - [x] Re-verify anonymous public browsing, authenticated desk access, and mobile public pages after the privacy refactor.
 - [x] Verify /desk and a protected module route with an authenticated session after the privacy refactor.
 - [x] Add automated coverage proving protected AgencyOS reads reject unauthenticated callers and succeed for authenticated callers.
+- [x] Reposition public copy from agency operations software to media agency services.
+- [x] Add clear public service messaging for websites, personal branding, social media management, PR, content, and campaigns.
+- [x] Update public navigation and conversion paths to support service discovery and inquiries.
+- [x] Verify the revised public pages on desktop and mobile while keeping the private desk protected.
+- [x] Verify the rewritten media-agency public pages at desktop width after the latest copy and navigation changes.
+- [x] Re-check private desk protection after the public-site rewrite and save a fresh checkpoint.
+- [x] Save a fresh checkpoint after the media-agency public-site rewrite and verification.
