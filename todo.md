@@ -108,3 +108,4 @@
 - [x] Resolve Vercel build log errors by replacing the Express/Vite serverless entrypoint with a standalone typed Vercel handler.
 - [x] Confirm the Vercel project has `MONGODB_URI` and `MONGODB_DB_NAME` configured for the deployment environment; the live API successfully inserted an inquiry record.
 - [x] Redeploy the corrected API and verify the live inquiry response is JSON and reaches MongoDB Atlas.
+- [x] Verify the public brand text edit from `ERDEN MEDIA` to `EARDEN MEDIA`; source, rendered header, TypeScript, and unit checks are correct.
