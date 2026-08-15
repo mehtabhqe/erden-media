@@ -83,13 +83,13 @@
 - [x] Prepare Vercel-compatible build and runtime configuration for the public site and private workspace.
 - [x] Validate the MongoDB Atlas connection, public inquiry validation path, and protected inbox contract without exposing secrets.
 - [x] Prepare the final Vercel/MongoDB setup package and request the required user values.
-- [ ] Document the GitHub repository export and Vercel deployment architecture.
-- [ ] Confirm serverless backend, MongoDB Atlas, OAuth, and environment-variable responsibilities.
-- [ ] Prepare a repository-ready deployment package and final setup instructions.
-- [ ] Confirm GitHub access for `mehtabhqe/erden-media` and public repository scope.
-- [ ] Prepare the public repository export and Vercel/MongoDB deployment configuration.
+- [x] Document the GitHub repository export and Vercel deployment architecture.
+- [x] Confirm serverless backend, MongoDB Atlas, OAuth, and environment-variable responsibilities.
+- [x] Prepare a repository-ready deployment package and final setup instructions.
+- [x] Confirm GitHub access for `mehtabhqe/erden-media` and public repository scope.
+- [x] Prepare the public repository export and Vercel/MongoDB deployment configuration.
 - [ ] Validate the full public site, serverless backend, and inquiry database path.
-- [ ] Deliver the repository URL or ready-to-push package and exact Vercel setup instructions.
+- [x] Deliver the repository URL or ready-to-push package and exact Vercel setup instructions.
 - [x] Verify the connected GitHub repository and current branch.
 - [x] Push the latest ERDEN MEDIA code and Vercel/MongoDB configuration.
 - [ ] Configure or verify Vercel deployment and production environment variables.
@@ -101,3 +101,7 @@
 - [x] Fix Vercel output-directory mismatch: Vite was generating `client/dist/public`; `build:vercel` now generates the repository-root `dist/public` expected by Vercel.
 - [x] Re-run Vercel-compatible build and verify `dist/public` plus bundled API output are generated.
 - [x] Commit and push the Vercel configuration fix for redeployment.
+- [ ] Resolve Vercel deployment access/protection: the connected Vercel account cannot fetch the supplied deployment or team project, so deployment protection cannot be changed programmatically.
+- [x] Diagnose production inquiry submission failure: Vercel was crashing the function during startup before tRPC could return JSON because the serverless entrypoint loaded Vite-only modules.
+- [x] Fix the serverless inquiry route or environment handling and add regression coverage by isolating the Express/tRPC app from Vite and adding `server/vercel.api.test.ts`.
+- [ ] Push, redeploy, and validate a real production inquiry submission response.
