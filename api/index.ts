@@ -1,11 +1,16 @@
 import type { RequestHandler } from "express";
-import { createApp } from "../server/_core/app";
 
 let app: RequestHandler | undefined;
 
-export default function handler(req: Parameters<RequestHandler>[0], res: Parameters<RequestHandler>[1]) {
+export default async function handler(
+  req: Parameters<RequestHandler>[0],
+  res: Parameters<RequestHandler>[1],
+) {
   try {
-    app ??= createApp();
+    if (!app) {
+      const { createApp } = await import("../server/_core/app");
+      app = createApp();
+    }
     return app(req, res, error => {
       console.error("[Vercel API] Unhandled request error", error);
       if (!res.headersSent) {
