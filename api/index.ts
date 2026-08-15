@@ -20,7 +20,7 @@ export default async function handler(
   } catch (error) {
     console.error("[Vercel API] Initialization failed", error);
     if (!res.headersSent) {
-      res.status(500).json({ error: "API initialization failed" });
+      res.status(500).json({ error: "API initialization failed", detail: error instanceof Error ? error.message : String(error) });
     }
   }
 }
