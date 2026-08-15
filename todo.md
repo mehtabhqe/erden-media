@@ -102,6 +102,6 @@
 - [x] Re-run Vercel-compatible build and verify `dist/public` plus bundled API output are generated.
 - [x] Commit and push the Vercel configuration fix for redeployment.
 - [ ] Resolve Vercel deployment access/protection: the connected Vercel account cannot fetch the supplied deployment or team project, so deployment protection cannot be changed programmatically.
-- [x] Diagnose production inquiry submission failure: Vercel was crashing the function during startup before tRPC could return JSON because the serverless entrypoint loaded Vite-only modules.
-- [x] Fix the serverless inquiry route or environment handling and add regression coverage by isolating the Express/tRPC app from Vite and adding `server/vercel.api.test.ts`.
+- [ ] Diagnose production inquiry submission failure: Vercel returns `FUNCTION_INVOCATION_FAILED`; local reproduction points to serverless startup/configuration and the handler now exposes JSON errors for confirmation.
+- [x] Isolate the Express/tRPC app from Vite, add lazy JSON error handling, and add `server/vercel.api.test.ts` coverage for health and inquiry responses.
 - [ ] Push, redeploy, and validate a real production inquiry submission response.
