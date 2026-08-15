@@ -88,23 +88,23 @@
 - [x] Prepare a repository-ready deployment package and final setup instructions.
 - [x] Confirm GitHub access for `mehtabhqe/erden-media` and public repository scope.
 - [x] Prepare the public repository export and Vercel/MongoDB deployment configuration.
-- [ ] Validate the full public site, serverless backend, and inquiry database path.
+- [x] Validate the full public site, serverless backend, and inquiry database path.
 - [x] Deliver the repository URL or ready-to-push package and exact Vercel setup instructions.
 - [x] Verify the connected GitHub repository and current branch.
 - [x] Push the latest ERDEN MEDIA code and Vercel/MongoDB configuration.
-- [ ] Configure or verify Vercel deployment and production environment variables.
-- [ ] Validate the deployed public site, serverless backend, and inquiry workflow.
+- [x] Configure or verify Vercel deployment and production environment variables for the public deployment.
+- [x] Validate the deployed public site, serverless backend, and inquiry workflow.
 - [x] Verify the enabled Vercel integration and target team/project access.
-- [ ] Create or link the Vercel project to `mehtabhqe/erden-media`.
-- [ ] Configure MongoDB Atlas, OAuth, and production environment variables in Vercel.
-- [ ] Trigger and validate a production deployment, including the public site and inquiry API.
+- [x] Create or link the Vercel project to `mehtabhqe/erden-media`.
+- [x] Configure MongoDB Atlas and the required production inquiry variables in Vercel; OAuth remains optional for the public-only deployment.
+- [x] Trigger and validate a production deployment, including the public site and inquiry API.
 - [x] Fix Vercel output-directory mismatch: Vite was generating `client/dist/public`; `build:vercel` now generates the repository-root `dist/public` expected by Vercel.
 - [x] Re-run Vercel-compatible build and verify `dist/public` plus bundled API output are generated.
 - [x] Commit and push the Vercel configuration fix for redeployment.
-- [ ] Resolve Vercel deployment access/protection: the connected Vercel account cannot fetch the supplied deployment or team project, so deployment protection cannot be changed programmatically.
-- [ ] Diagnose production inquiry submission failure: Vercel returns `FUNCTION_INVOCATION_FAILED`; local reproduction points to serverless startup/configuration and the handler now exposes JSON errors for confirmation.
+- [x] Resolve Vercel deployment access/protection through the user’s Vercel project access; the production domain is publicly reachable.
+- [x] Resolve the stale deployment and serverless API issues; the standalone API now responds successfully in production. The original runtime exception was not recoverable from Vercel logs.
 - [x] Isolate the Express/tRPC app from Vite, add lazy JSON error handling, and add `server/vercel.api.test.ts` coverage for health and inquiry responses.
-- [ ] Push, redeploy, and validate a real production inquiry submission response.
-- [ ] Resolve Vercel build log errors: `api/index.ts` handler types and Express type resolution fail during Vercel’s post-build TypeScript check.
-- [ ] Confirm the Vercel project has `MONGODB_URI` and `MONGODB_DB_NAME` configured for the deployment environment.
-- [ ] Redeploy the corrected API and verify the live inquiry response is JSON and reaches MongoDB Atlas.
+- [x] Push, redeploy, and validate a real production inquiry submission response.
+- [x] Resolve Vercel build log errors by replacing the Express/Vite serverless entrypoint with a standalone typed Vercel handler.
+- [x] Confirm the Vercel project has `MONGODB_URI` and `MONGODB_DB_NAME` configured for the deployment environment; the live API successfully inserted an inquiry record.
+- [x] Redeploy the corrected API and verify the live inquiry response is JSON and reaches MongoDB Atlas.
