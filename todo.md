@@ -105,3 +105,6 @@
 - [ ] Diagnose production inquiry submission failure: Vercel returns `FUNCTION_INVOCATION_FAILED`; local reproduction points to serverless startup/configuration and the handler now exposes JSON errors for confirmation.
 - [x] Isolate the Express/tRPC app from Vite, add lazy JSON error handling, and add `server/vercel.api.test.ts` coverage for health and inquiry responses.
 - [ ] Push, redeploy, and validate a real production inquiry submission response.
+- [ ] Resolve Vercel build log errors: `api/index.ts` handler types and Express type resolution fail during Vercel’s post-build TypeScript check.
+- [ ] Confirm the Vercel project has `MONGODB_URI` and `MONGODB_DB_NAME` configured for the deployment environment.
+- [ ] Redeploy the corrected API and verify the live inquiry response is JSON and reaches MongoDB Atlas.
