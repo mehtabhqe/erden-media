@@ -109,6 +109,12 @@
 - [x] Confirm the Vercel project has `MONGODB_URI` and `MONGODB_DB_NAME` configured for the deployment environment; the live API successfully inserted an inquiry record.
 - [x] Redeploy the corrected API and verify the live inquiry response is JSON and reaches MongoDB Atlas.
 - [x] Verify the public brand text edit from `ERDEN MEDIA` to `EARDEN MEDIA`; source, rendered header, TypeScript, and unit checks are correct.
-- [ ] Push the verified EARDEN MEDIA branding change to GitHub and confirm the commit.
+- [x] Push the verified EARDEN MEDIA branding change to GitHub and confirm commit `c6edd41`; GitHub main contains `EARDEN MEDIA`.
 - [ ] Trigger or complete the Vercel production redeployment from the pushed commit.
 - [ ] Verify the production domain reflects the branding change.
+- [ ] Diagnose why the `/desk` admin sign-in button does not work on the Vercel deployment.
+- [ ] Fix and test the OAuth redirect/callback configuration for the admin panel.
+- [ ] Redeploy and verify the admin sign-in flow on the production domain.
+- [ ] Configure `VITE_OAUTH_PORTAL_URL`, `VITE_APP_ID`, `OAUTH_SERVER_URL`, `JWT_SECRET`, `OWNER_OPEN_ID`, and `OWNER_NAME` for the Vercel admin deployment.
+- [ ] Redeploy the Vercel project after OAuth configuration.
+- [ ] Verify that `/desk` sign-in navigates to the Manus OAuth portal in production.

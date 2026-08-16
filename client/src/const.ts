@@ -13,8 +13,11 @@ export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 // with "invalid oauth state". It returns void by design, so there is no URL to
 // stash across renders.
 export const startLogin = () => {
-  const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
-  const appId = import.meta.env.VITE_APP_ID;
+  // Keep the client-side login resilient on external hosts. The portal URL and
+  // app ID are public OAuth configuration; Vercel may omit VITE_* values when a
+  // deployment is rebuilt from an older environment snapshot.
+  const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL || "https://manus.im";
+  const appId = import.meta.env.VITE_APP_ID || "iDecD3pUKfWkH56xayPaMH";
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
 
   const nonce = crypto.randomUUID();
