@@ -262,3 +262,7 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 @media (max-width: 480px) { .public-footer-top { grid-template-columns: 1fr; gap: 24px; }.public-footer-brand { grid-column: auto; }.public-footer-column { gap: 7px; } }
 .public-footer-social { display: inline-flex; align-items: center; gap: 8px; }
 .public-footer-social svg { flex: 0 0 auto; }
+.public-footer-socials { display: flex; align-items: center; gap: 10px; }
+.public-footer-social { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #5d656b; color: #dce0e3; }
+.public-footer-social:hover, .public-footer-social:focus-visible { border-color: #e35d48; color: #e35d48; outline: none; }
+.public-footer-social--inactive { color: #687178; border-color: #3d4449; cursor: default; opacity: .72; }

@@ -131,3 +131,5 @@
 - [x] Verify the latest PublicSite footer branding edit from ERDEN MEDIA to EARDEN MEDIA, run checks, and save a checkpoint.
 - [x] Replace the public footer with a professional contact layout using the approved support email, phone, address, business hours, and Instagram handle; verify and checkpoint.
 - [x] Replace the footer Instagram text link with a recognizable clickable Instagram icon link to @eardenmedia, verify, and checkpoint.
+- [x] Simplify footer social links to icon-only Instagram and LinkedIn buttons, verify, and checkpoint.
+- [x] Keep the LinkedIn logo visible as an inactive placeholder until the agency profile exists, preserve clickable Instagram, verify, and checkpoint.
