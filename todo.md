@@ -151,3 +151,4 @@
 - [x] Integrate the supplied EARDEN MEDIA artwork as the public header/footer logo, favicon, and social-preview asset.
 - [x] Refine the public palette modestly so the logo’s blue-lilac gradient complements the existing cream, black, and coral system; verify and checkpoint; the existing palette is retained with the logo as a controlled accent.
 - [x] Prevent the supplied square logo artwork from cropping in the header and footer; preserve the full mark and wordmark across desktop and mobile.
+- [x] Reduce and refine the supplied logo in the public header so it feels compact and aligned with the minimalist aesthetic; preserve the footer artwork, verify, and checkpoint.
