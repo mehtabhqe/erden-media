@@ -130,3 +130,4 @@
 - [x] Confirm the configured Vercel domain shows `Valid Configuration` and `Production`, and verify the custom-domain `/desk` route loads the private sign-in screen.
 - [x] Verify the latest PublicSite footer branding edit from ERDEN MEDIA to EARDEN MEDIA, run checks, and save a checkpoint.
 - [x] Replace the public footer with a professional contact layout using the approved support email, phone, address, business hours, and Instagram handle; verify and checkpoint.
+- [x] Replace the footer Instagram text link with a recognizable clickable Instagram icon link to @eardenmedia, verify, and checkpoint.
