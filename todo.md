@@ -153,4 +153,5 @@
 - [x] Prevent the supplied square logo artwork from cropping in the header and footer; preserve the full mark and wordmark across desktop and mobile.
 - [x] Reduce and refine the supplied logo in the public header so it feels compact and aligned with the minimalist aesthetic; preserve the footer artwork, verify, and checkpoint.
 - [x] Commit the compact header-logo refinement to GitHub, deploy it to Vercel, and verify the live custom domain; GitHub main now includes the logo commits and Vercel deployment `d6c1206` is promoted.
-- [ ] Save a checkpoint covering the compact header-logo deployment after the live custom-domain verification.
+- [x] Save a checkpoint covering the compact header-logo deployment after the live custom-domain verification.
+- [x] Repair the missing EARDEN MEDIA logo on the live Vercel site by replacing the broken Manus storage reference with a stable Vercel-served asset; redeploy, verify, and checkpoint. Commit `f2f8515` was force-promoted and custom-domain assets return `image/webp`/`image/jpeg`.
