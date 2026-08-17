@@ -2,7 +2,7 @@ import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, calendarEvents, campaigns, clients, contentItems, files, influencers, invoices, mediaContacts, messages, publicInquiries, reports, tasks, users, workspaceSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
-import { createMongoInquiry, listMongoInquiries } from './mongo';
+import { createMongoInquiry, listMongoInquiries, updateMongoInquiryStatus } from "./mongo";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -235,5 +235,16 @@ export async function listPublicInquiries() {
   if (process.env.MONGODB_URI) return listMongoInquiries();
   const db = await getDb();
   return db ? db.select().from(publicInquiries).orderBy(desc(publicInquiries.createdAt)) : [];
+}
+
+export async function updatePublicInquiryStatus(id: string | number, status: "new" | "contacted" | "qualified" | "closed") {
+  if (process.env.MONGODB_URI) return updateMongoInquiryStatus(String(id), status);
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const numericId = Number(id);
+  await db.update(publicInquiries).set({ status: status === "contacted" || status === "qualified" ? "in_progress" : status }).where(eq(publicInquiries.id, numericId));
+  const rows = await db.select().from(publicInquiries).where(eq(publicInquiries.id, numericId)).limit(1);
+  if (!rows[0]) throw new Error("Inquiry not found");
+  return rows[0];
 }
 

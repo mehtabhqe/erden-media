@@ -3,7 +3,7 @@ import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createCalendarEvent, createCampaign, createClient, createInfluencer, createInvoice, createMediaContact, createPublicInquiry, createReport, getWorkspaceSettings, listCalendarEvents, listCampaigns, listClients, listContentItems, listFiles, listInfluencers, listInvoices, listMediaContacts, listMessages, listPublicInquiries, listReports, listTasks, updateContentStatus, updateTaskStatus } from "./db";
+import { createCalendarEvent, createCampaign, createClient, createInfluencer, createInvoice, createMediaContact, createPublicInquiry, createReport, getWorkspaceSettings, listCalendarEvents, listCampaigns, listClients, listContentItems, listFiles, listInfluencers, listInvoices, listMediaContacts, listMessages, listPublicInquiries, listReports, listTasks, updateContentStatus, updatePublicInquiryStatus, updateTaskStatus } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -21,8 +21,8 @@ export const appRouter = router({
 
   agency: router({
     summary: protectedProcedure.query(async () => {
-      const [clientRows, campaignRows, contentRows, taskRows, invoiceRows] = await Promise.all([
-        listClients(), listCampaigns(), listContentItems(), listTasks(), listInvoices(),
+      const [clientRows, campaignRows, contentRows, taskRows, invoiceRows, inquiryRows] = await Promise.all([
+        listClients(), listCampaigns(), listContentItems(), listTasks(), listInvoices(), listPublicInquiries(),
       ]);
       return {
         clients: clientRows.length,
@@ -31,7 +31,9 @@ export const appRouter = router({
         openTasks: taskRows.filter((row) => row.status !== "done").length,
         outstandingInvoices: invoiceRows.filter((row) => row.status === "open" || row.status === "overdue").length,
         revenue: invoiceRows.filter((row) => row.status === "paid").reduce((total, row) => total + row.amount, 0),
-        isEmpty: clientRows.length === 0 && campaignRows.length === 0 && contentRows.length === 0 && taskRows.length === 0 && invoiceRows.length === 0,
+        totalInquiries: inquiryRows.length,
+        newInquiries: inquiryRows.filter((row) => row.status === "new").length,
+        isEmpty: clientRows.length === 0 && campaignRows.length === 0 && contentRows.length === 0 && taskRows.length === 0 && invoiceRows.length === 0 && inquiryRows.length === 0,
       };
     }),
     clients: protectedProcedure.query(() => listClients()),
@@ -47,6 +49,7 @@ export const appRouter = router({
     messages: protectedProcedure.query(() => listMessages()),
     settings: protectedProcedure.query(() => getWorkspaceSettings()),
     inquiries: protectedProcedure.query(() => listPublicInquiries()),
+    updateInquiryStatus: protectedProcedure.input(z.object({ id: z.union([z.string(), z.number()]), status: z.enum(["new", "contacted", "qualified", "closed"]) })).mutation(({ input }) => updatePublicInquiryStatus(input.id, input.status)),
     createClient: protectedProcedure.input(z.object({
       name: z.string().min(2),
       category: z.string().min(2),

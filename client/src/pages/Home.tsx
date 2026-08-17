@@ -171,7 +171,7 @@ export default function Home() {
             </div>
             <div className="hero-aside">
               <div className="hero-aside-label">Network pulse</div>
-              <div className="pulse-row"><span className="pulse-number">{summaryQuery.data?.clients ?? 0}</span><span className="pulse-text">active clients<br /><b>{summaryQuery.isLoading ? "syncing workspace" : summaryQuery.isError ? "live data unavailable" : `${summaryQuery.data?.openTasks ?? 0} open tasks · ${summaryQuery.data?.outstandingInvoices ?? 0} invoices`}</b></span></div>
+              <div className="pulse-row"><span className="pulse-number">{summaryQuery.data?.clients ?? 0}</span><span className="pulse-text">active clients<br /><b>{summaryQuery.isLoading ? "syncing workspace" : summaryQuery.isError ? "live data unavailable" : `${summaryQuery.data?.newInquiries ?? 0} new enquiries · ${summaryQuery.data?.openTasks ?? 0} open tasks`}</b></span></div>
               <div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
             </div>
           </section>

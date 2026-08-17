@@ -54,3 +54,17 @@ export async function listMongoInquiries() {
   const rows = await collection.find({}).sort({ createdAt: -1 }).toArray();
   return rows.map(({ _id, ...row }) => ({ id: _id?.toString(), ...row }));
 }
+
+export async function updateMongoInquiryStatus(id: string, status: MongoPublicInquiry["status"]) {
+  const collection = await inquiries();
+  const { ObjectId } = await import("mongodb");
+  if (!ObjectId.isValid(id)) throw new Error("Invalid inquiry id");
+  const result = await collection.findOneAndUpdate(
+    { _id: new ObjectId(id) } as any,
+    { $set: { status } },
+    { returnDocument: "after" },
+  );
+  if (!result) throw new Error("Inquiry not found");
+  const { _id, ...row } = result;
+  return { id: _id?.toString(), ...row };
+}

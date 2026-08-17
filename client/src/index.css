@@ -314,3 +314,16 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .private-login-form input:focus { box-shadow: 4px 4px 0 #e35d48; }
 .private-login-form .form-error { margin: 0; }
 .private-gate > .public-button { justify-self: start; }
+
+.inquiry-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 2rem 0; border: 1px solid var(--ink); background: var(--ink); }
+.inquiry-summary > div { display: grid; gap: .35rem; padding: 1rem; background: var(--paper); }
+.inquiry-summary strong { font-size: 2rem; line-height: 1; }
+.inquiry-summary span { color: #6f6a63; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+.inquiry-card { position: relative; }
+.inquiry-card-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.inquiry-card-top select { min-width: 7.5rem; border: 1px solid var(--ink); background: var(--white-paper); padding: .4rem .55rem; font: inherit; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+.inquiry-meta { margin-bottom: .6rem; }
+.inquiry-contact { display: grid; gap: .35rem; margin: .75rem 0; font-size: .84rem; }
+.inquiry-contact a, .inquiry-contact span { display: inline-flex; align-items: center; gap: .4rem; color: inherit; overflow-wrap: anywhere; }
+.inquiry-message { min-height: 3.2rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 720px) { .inquiry-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } .inquiry-card-top select { min-width: 6.5rem; } }

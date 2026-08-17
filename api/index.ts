@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { SignJWT, jwtVerify } from "jose";
 import { z } from "zod";
 
@@ -221,6 +221,20 @@ async function listInquiries() {
   return rows.map(({ _id, ...row }) => ({ id: _id?.toString(), ...row }));
 }
 
+async function updateInquiryStatus(id: string, status: "new" | "contacted" | "qualified" | "closed") {
+  if (!ObjectId.isValid(id)) throw new Error("Invalid inquiry id");
+  const client = await getMongoClient();
+  const database = env("MONGODB_DB_NAME") || "erden_media";
+  const result = await client.db(database).collection("publicInquiries").findOneAndUpdate(
+    { _id: new ObjectId(id) },
+    { $set: { status } },
+    { returnDocument: "after" },
+  );
+  if (!result) throw new Error("Inquiry not found");
+  const { _id, ...row } = result;
+  return { id: _id?.toString(), ...row };
+}
+
 const inquirySchema = z.object({
   name: z.string().min(2).max(160),
   email: z.string().email(),
@@ -277,6 +291,20 @@ export default async function handler(req: Request, res: Response) {
         return;
       }
       trpcSuccess(res, await listInquiries());
+      return;
+    }
+    if (name === "agency.updateInquiryStatus") {
+      const user = await readSession(req);
+      if (!user || user.role !== "admin") {
+        trpcError(res, 401, "Please login", "UNAUTHORIZED");
+        return;
+      }
+      const parsed = z.object({ id: z.string().min(1), status: z.enum(["new", "contacted", "qualified", "closed"]) }).safeParse(input);
+      if (!parsed.success) {
+        trpcError(res, 400, parsed.error.message, "BAD_REQUEST");
+        return;
+      }
+      trpcSuccess(res, await updateInquiryStatus(parsed.data.id, parsed.data.status));
       return;
     }
     if (name === "auth.logout") {
