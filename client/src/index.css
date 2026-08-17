@@ -370,3 +370,10 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .about-close p { color: #4b2b24; }
 @media (max-width: 800px) { .about-hero, .about-story, .about-belief, .about-services, .about-fit, .about-process, .about-close { padding: 78px 18px; } .about-hero { min-height: 600px; } .about-story-grid { grid-template-columns: 1fr; gap: 25px; margin-top: 35px; } .about-belief-grid { grid-template-columns: 1fr; gap: 25px; } .about-process-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .about-service-item { grid-template-columns: 42px 1fr; gap: 12px; } .about-process-grid { grid-template-columns: 1fr; } .about-process-grid > div { min-height: auto; } }
+
+.article-story { max-width: 780px; }
+.article-intro { font: 600 clamp(20px, 2.4vw, 29px)/1.45 "DM Sans", sans-serif; color: var(--ink) !important; margin: 0 0 4.5rem !important; }
+.article-story section { margin: 0 0 3.8rem; }
+.article-story section h2 { max-width: 650px; margin: 0 0 1rem; font: 800 clamp(29px, 4vw, 54px)/.98 "Space Grotesk", sans-serif; letter-spacing: -.065em; }
+.article-story section p { max-width: 650px; margin: 0; }
+.article-closing { border-top: 2px solid var(--ink); padding-top: 1.4rem; margin: 4rem 0 1.4rem !important; font: 700 19px/1.5 "Space Grotesk", sans-serif; color: var(--ink) !important; }
