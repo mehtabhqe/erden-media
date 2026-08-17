@@ -278,3 +278,12 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
   .public-nav > a:not(.public-nav-cta) { min-height: 42px; padding: 11px 2px; border-bottom: 1px solid #d9dce0; font-size: 13px; }
   .public-nav-cta { min-width: 0; margin: 12px 0 0; }
 }
+
+/* Public navigation preference: stack the primary links vertically as the site expands. */
+@media (min-width: 801px) {
+  .public-header { min-height: 74px; height: auto; align-items: flex-start; padding-top: 16px; padding-bottom: 16px; }
+  .public-brand { margin-top: 7px; }
+  .public-nav { flex-direction: column; align-items: stretch; gap: 0; min-width: 190px; }
+  .public-nav > a:not(.public-nav-cta) { min-height: 25px; padding: 3px 0; justify-content: flex-end; }
+  .public-nav-cta { width: 190px; min-width: 190px; margin: 8px 0 0; }
+}

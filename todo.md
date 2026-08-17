@@ -139,3 +139,5 @@
 - [x] Open the mobile public navigation menu and verify the expanded responsive layout visually; the expanded state stacks all five links and the CTA with consistent spacing.
 - [x] Save a checkpoint specifically covering the public header navigation spacing and responsive refinement.
 - [ ] Push the verified public navigation changes to GitHub and deploy them to Vercel production; verify the live custom domain.
+- [x] Change the public header navigation links to a vertical stack for Services, Our work, About, Insights, and Contact; preserve the CTA, verify, and checkpoint.
+- [ ] Save a checkpoint specifically covering the vertical public header navigation stack after the verified desktop/mobile checks.
