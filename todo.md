@@ -138,3 +138,4 @@
 - [x] Refine the public header navigation spacing, alignment, and responsive behavior so Services, Our work, About, Insights, and Contact remain balanced as the site expands; verify and checkpoint.
 - [x] Open the mobile public navigation menu and verify the expanded responsive layout visually; the expanded state stacks all five links and the CTA with consistent spacing.
 - [x] Save a checkpoint specifically covering the public header navigation spacing and responsive refinement.
+- [ ] Push the verified public navigation changes to GitHub and deploy them to Vercel production; verify the live custom domain.
