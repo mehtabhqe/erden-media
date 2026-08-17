@@ -266,3 +266,15 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .public-footer-social { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #5d656b; color: #dce0e3; }
 .public-footer-social:hover, .public-footer-social:focus-visible { border-color: #e35d48; color: #e35d48; outline: none; }
 .public-footer-social--inactive { color: #687178; border-color: #3d4449; cursor: default; opacity: .72; }
+
+/* Public navigation refinement: keep the expanding link set visually grouped and easy to scan. */
+.public-header { gap: 28px; }
+.public-nav { margin-left: auto; gap: clamp(18px, 2.4vw, 32px); }
+.public-nav > a:not(.public-nav-cta) { display: inline-flex; align-items: center; min-height: 34px; padding: 8px 0; white-space: nowrap; font-size: 12px; letter-spacing: -.01em; }
+.public-nav-cta { min-width: 164px; justify-content: center; margin-left: 6px; white-space: nowrap; }
+@media (max-width: 800px) {
+  .public-header { gap: 16px; }
+  .public-nav { margin-left: 0; gap: 0; }
+  .public-nav > a:not(.public-nav-cta) { min-height: 42px; padding: 11px 2px; border-bottom: 1px solid #d9dce0; font-size: 13px; }
+  .public-nav-cta { min-width: 0; margin: 12px 0 0; }
+}

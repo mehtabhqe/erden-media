@@ -135,3 +135,6 @@
 - [x] Keep the LinkedIn logo visible as an inactive placeholder until the agency profile exists, preserve clickable Instagram, verify, and checkpoint.
 - [x] Add info@eardenmedia.site to the public footer contact block.
 - [x] Audit and repair missing public image assets on the Vercel-hosted site, then validate, push, redeploy, and checkpoint. Bundled WebP assets now return `200 image/webp` on the custom domain after promoting commit `c538325`.
+- [x] Refine the public header navigation spacing, alignment, and responsive behavior so Services, Our work, About, Insights, and Contact remain balanced as the site expands; verify and checkpoint.
+- [x] Open the mobile public navigation menu and verify the expanded responsive layout visually; the expanded state stacks all five links and the CTA with consistent spacing.
+- [x] Save a checkpoint specifically covering the public header navigation spacing and responsive refinement.
