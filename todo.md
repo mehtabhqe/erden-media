@@ -158,3 +158,4 @@
 - [x] Replace the blocked Manus OAuth desk entry with a secure password-login fallback using the user-provided username and password secrets; preserve private route protection, add tests, deploy, and verify. Live custom-domain login and `auth.me` confirmed `role: admin` after deployment `e6720c1`.
 
 - [x] Remove dashboard demo records and connect the private Inquiries module to real MongoDB-backed public submissions; deployment `0dab1f7` was promoted to `www.eardenmedia.site`, where the dashboard shows truthful empty states and the inquiry inbox renders real submissions.
+- [x] Clean clearly test-looking inquiry records from MongoDB while preserving legitimate-looking submissions; removed 8 approved records including repeated API verification entries and obvious test identities/emails, then verified the live inbox now shows 5 preserved submissions.
