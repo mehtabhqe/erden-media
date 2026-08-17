@@ -155,3 +155,4 @@
 - [x] Commit the compact header-logo refinement to GitHub, deploy it to Vercel, and verify the live custom domain; GitHub main now includes the logo commits and Vercel deployment `d6c1206` is promoted.
 - [x] Save a checkpoint covering the compact header-logo deployment after the live custom-domain verification.
 - [x] Repair the missing EARDEN MEDIA logo on the live Vercel site by replacing the broken Manus storage reference with a stable Vercel-served asset; redeploy, verify, and checkpoint. Commit `f2f8515` was force-promoted and custom-domain assets return `image/webp`/`image/jpeg`.
+- [x] Replace the blocked Manus OAuth desk entry with a secure password-login fallback using the user-provided username and password secrets; preserve private route protection, add tests, deploy, and verify. Custom-domain login returned HTTP 200 and `auth.me` confirmed `role: admin` after promoting deployment `e6720c1`.

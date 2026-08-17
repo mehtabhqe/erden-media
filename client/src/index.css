@@ -307,3 +307,10 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
   .public-logo-image { width: 36px; height: 36px; }
   .public-logo-image--footer { width: 82px; height: 82px; }
 }
+
+.private-login-form { display: grid; gap: 12px; width: min(100%, 360px); margin: 8px 0 2px; }
+.private-login-form label { display: grid; gap: 6px; font: 700 10px "Space Grotesk"; letter-spacing: .12em; text-transform: uppercase; }
+.private-login-form input { width: 100%; box-sizing: border-box; border: 1px solid #101112; padding: 12px 13px; background: white; color: #101112; font: 500 14px "DM Sans"; outline: 0; }
+.private-login-form input:focus { box-shadow: 4px 4px 0 #e35d48; }
+.private-login-form .form-error { margin: 0; }
+.private-gate > .public-button { justify-self: start; }

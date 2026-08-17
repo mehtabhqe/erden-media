@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Link, Route, Switch } from "wouter";
-import { startLogin } from "./const";
 import { useAuth } from "./_core/hooks/useAuth";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -10,10 +10,42 @@ import ModulePage from "./pages/ModulePage";
 import PublicSite from "./pages/PublicSite";
 import UtilityPage from "./pages/UtilityPage";
 
+function AdminLogin({ refresh }: { refresh: () => Promise<unknown> }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        credentials: "include",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error || "Unable to sign in");
+      }
+      await refresh();
+    } catch (loginError) {
+      setError(loginError instanceof Error ? loginError.message : "Unable to sign in");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return <div className="private-gate"><span className="section-kicker">EARDEN MEDIA / PRIVATE</span><h1>The operating desk is for the team.</h1><p>Sign in to access clients, campaigns, approvals, reporting, and workspace settings.</p><form className="private-login-form" onSubmit={submit}><label>Username<input required autoComplete="username" value={username} onChange={(event) => setUsername(event.target.value)} /></label><label>Password<input required type="password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} /></label>{error && <p className="form-error" role="alert">{error}</p>}<button className="public-button public-button--dark" type="submit" disabled={submitting}>{submitting ? "Signing in…" : "Sign in to the desk"}</button></form><Link className="public-button" href="/">Back to the public site</Link></div>;
+}
+
 function PrivateAccess({ children }: { children: React.ReactNode }) {
-  const { loading, isAuthenticated } = useAuth();
-  if (loading) return <div className="private-gate"><span className="section-kicker">AGENCYOS / PRIVATE</span><h1>Checking workspace access.</h1><p>One moment while we verify your session.</p></div>;
-  if (!isAuthenticated) return <div className="private-gate"><span className="section-kicker">AGENCYOS / PRIVATE</span><h1>The operating desk is for the team.</h1><p>Sign in with your AgencyOS account to access clients, campaigns, approvals, reporting, and workspace settings.</p><div className="public-actions"><button className="public-button public-button--dark" onClick={() => startLogin()}>Sign in to the desk</button><Link className="public-button" href="/">Back to the public site</Link></div></div>;
+  const { loading, isAuthenticated, refresh } = useAuth();
+  if (loading) return <div className="private-gate"><span className="section-kicker">EARDEN MEDIA / PRIVATE</span><h1>Checking workspace access.</h1><p>One moment while we verify your session.</p></div>;
+  if (!isAuthenticated) return <AdminLogin refresh={refresh} />;
   return <>{children}</>;
 }
 

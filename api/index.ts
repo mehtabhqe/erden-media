@@ -28,6 +28,22 @@ const OAUTH_STATE_COOKIE = "__Host-oauth_state";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 let mongoClientPromise: Promise<MongoClient> | undefined;
 
+function constantTimeEqual(left: string, right: string) {
+  let difference = left.length ^ right.length;
+  const length = Math.max(left.length, right.length);
+  for (let index = 0; index < length; index += 1) {
+    difference |= (left.charCodeAt(index) || 0) ^ (right.charCodeAt(index) || 0);
+  }
+  return difference === 0;
+}
+
+function verifyAdminCredentials(username: string, password: string) {
+  const configuredUsername = env("AGENCYOS_ADMIN_USERNAME");
+  const configuredPassword = env("AGENCYOS_ADMIN_PASSWORD");
+  if (!configuredUsername || !configuredPassword || !username || !password) return false;
+  return constantTimeEqual(username, configuredUsername) && constantTimeEqual(password, configuredPassword);
+}
+
 function json(res: Response, statusCode: number, data: unknown) {
   res.statusCode = statusCode;
   res.setHeader("content-type", "application/json; charset=utf-8");
@@ -115,11 +131,25 @@ async function readSession(req: Request): Promise<SessionUser | null> {
       openId,
       name,
       email: null,
-      role: openId === env("OWNER_OPEN_ID") ? "admin" : "user",
+      role: openId === env("OWNER_OPEN_ID") || openId === `password:${env("AGENCYOS_ADMIN_USERNAME")}` ? "admin" : "user",
     };
   } catch {
     return null;
   }
+}
+
+async function handleAdminLogin(req: Request, res: Response) {
+  const body = await readBody(req);
+  const username = typeof body.username === "string" ? body.username : "";
+  const password = typeof body.password === "string" ? body.password : "";
+  if (!verifyAdminCredentials(username, password)) {
+    json(res, 401, { error: "Invalid username or password" });
+    return;
+  }
+
+  const session = await createSession({ openId: `password:${username}`, name: "EARDEN MEDIA Admin" });
+  res.setHeader("set-cookie", `${COOKIE_NAME}=${encodeURIComponent(session)}; Path=/; Max-Age=${ONE_YEAR_SECONDS}; HttpOnly; Secure; SameSite=Lax`);
+  json(res, 200, { success: true });
 }
 
 async function handleOAuthCallback(req: Request, res: Response, url: URL) {
@@ -195,6 +225,20 @@ const inquirySchema = z.object({
 
 export default async function handler(req: Request, res: Response) {
   const url = new URL(req.url ?? "/", "http://localhost");
+  if (url.pathname === "/api/admin/login") {
+    if (req.method !== "POST") {
+      json(res, 405, { error: "Method not allowed" });
+      return;
+    }
+    try {
+      await handleAdminLogin(req, res);
+    } catch (error) {
+      console.error("[Vercel Admin Login] Request failed", error);
+      json(res, 500, { error: "Admin login failed" });
+    }
+    return;
+  }
+
   if (url.pathname === "/api/oauth/callback") {
     try {
       await handleOAuthCallback(req, res, url);
