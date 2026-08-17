@@ -120,7 +120,7 @@
 - [x] Verify that `/desk` sign-in navigates to the Manus OAuth portal in production.
 - [x] Diagnose the custom-domain admin login error: the standalone Vercel handler returned `auth.me: null` and had no OAuth callback implementation.
 - [x] Correct the standalone Vercel handler with OAuth code exchange, user lookup, JWT session creation, cookie handling, and authenticated `auth.me`; existing API regression suite passes 10 tests.
-- [ ] Redeploy and verify successful custom-domain authentication.
+- [x] Redeploy and verify successful custom-domain authentication through the secure password fallback; production login and authenticated `auth.me` were verified on `www.eardenmedia.site` after deployment `e6720c1`.
 - [ ] Add `https://www.eardenmedia.site/api/oauth/callback` and `https://eardenmedia.site/api/oauth/callback` to the Manus OAuth application allowlist.
 - [ ] Verify the custom-domain OAuth login after updating the allowlist.
 - [ ] Confirm whether `mehtabalh@gmail.com` is the owner identity accepted by the Manus OAuth session; do not use email as a substitute for the redirect allowlist.
