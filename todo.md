@@ -121,10 +121,10 @@
 - [x] Diagnose the custom-domain admin login error: the standalone Vercel handler returned `auth.me: null` and had no OAuth callback implementation.
 - [x] Correct the standalone Vercel handler with OAuth code exchange, user lookup, JWT session creation, cookie handling, and authenticated `auth.me`; existing API regression suite passes 10 tests.
 - [x] Redeploy and verify successful custom-domain authentication through the secure password fallback; production login and authenticated `auth.me` were verified on `www.eardenmedia.site` after deployment `e6720c1`.
-- [ ] Add `https://www.eardenmedia.site/api/oauth/callback` and `https://eardenmedia.site/api/oauth/callback` to the Manus OAuth application allowlist.
-- [ ] Verify the custom-domain OAuth login after updating the allowlist.
-- [ ] Confirm whether `mehtabalh@gmail.com` is the owner identity accepted by the Manus OAuth session; do not use email as a substitute for the redirect allowlist.
-- [ ] Ensure the custom-domain callback is allowlisted before testing owner access.
+- [ ] Add `https://www.eardenmedia.site/api/oauth/callback` and `https://eardenmedia.site/api/oauth/callback` to the Manus OAuth application allowlist. Deferred: the user cannot access Manus OAuth settings; no OAuth allowlist change has been made.
+- [ ] Verify the custom-domain OAuth login after updating the allowlist. Deferred until the allowlist is accessible; the password-authenticated desk is the current private entry flow.
+- [ ] Confirm whether `mehtabalh@gmail.com` is the owner identity accepted by the Manus OAuth session; do not use email as a substitute for the redirect allowlist. Account selection was observed, but owner acceptance was not confirmed.
+- [ ] Ensure the custom-domain callback is allowlisted before testing owner access. Deferred; the live password-authenticated custom-domain desk was tested successfully instead.
 - [x] Verify Vercel SPA routing: `/desk`, `/services`, and `/contact` load correctly on `https://www.eardenmedia.site`; the old `erden-media.vercel.app` alias itself is unassigned and returns `DEPLOYMENT_NOT_FOUND`.
 - [x] Validate the production build and route fallback locally; `dist/public/index.html` exists and the Vercel-compatible build passes.
 - [x] Confirm the configured Vercel domain shows `Valid Configuration` and `Production`, and verify the custom-domain `/desk` route loads the private sign-in screen.
