@@ -226,7 +226,7 @@ export default function Home() {
             <div className="module campaign-module">
               <ModuleHeading number="B1" title="Campaign desk" action="All campaigns" onAction={() => activateNav("Campaigns")} />
               <div className="campaign-feature">
-                <img src="/manus-storage/agencyos-campaign-collage_f35c2d9c.png" alt="Editorial collage of campaign materials" />
+                <img src="/assets/agencyos-campaign-collage.webp" alt="Editorial collage of campaign materials" />
                 <div className="campaign-overlay"><span>LIVE / 03</span><strong>Monsoon<br />Table Stories</strong><small>Brew & Bloom · PR + Social</small></div>
               </div>
               <div className="campaign-foot"><span>Reach target <b>84%</b></span><div className="campaign-progress"><i style={{ width: "84%" }} /></div><ArrowUpRight size={16} /></div>
@@ -245,7 +245,7 @@ export default function Home() {
 
           <section className="bottom-grid">
             <div className="module quote-module"><div className="quote-mark">“</div><p>AgencyOS is the desk where scattered work becomes a signal.</p><span>FIELD NOTE / 001</span></div>
-            <div className="module media-module"><div className="media-copy"><ModuleHeading number="C1" title="Media signal" action="Open PR CRM" onAction={() => activateNav("PR & Media")} /><div className="media-stat"><strong>18</strong><span>new mentions<br /><b>this week</b></span></div></div><img src="/manus-storage/agencyos-media-signal_d38c92ac.png" alt="Abstract wall of media outreach cards" /></div>
+            <div className="module media-module"><div className="media-copy"><ModuleHeading number="C1" title="Media signal" action="Open PR CRM" onAction={() => activateNav("PR & Media")} /><div className="media-stat"><strong>18</strong><span>new mentions<br /><b>this week</b></span></div></div><img src="/assets/agencyos-media-signal.webp" alt="Abstract wall of media outreach cards" /></div>
             <div className="module finance-module"><ModuleHeading number="C2" title="Cash watch" action="View invoices" onAction={() => activateNav("Invoices")} /><div className="finance-number">₹2.1L</div><div className="finance-label">outstanding invoices <span className="status-chip status-chip--wait">4 open</span></div><div className="finance-note"><ArrowDownRight size={16} /> ₹42K received this week</div></div>
           </section>
 
