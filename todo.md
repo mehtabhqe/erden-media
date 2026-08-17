@@ -148,3 +148,6 @@
 - [x] Save a checkpoint specifically covering the EARDEN MEDIA title and metadata change after the verified local preview; checkpoint `9ba43a9d` was saved.
 - [x] Commit and deploy the EARDEN MEDIA title metadata change to Vercel and verify the live custom-domain browser title; GitHub commit `3aad2bb` was promoted and the live title is `EARDEN MEDIA — Media Agency`.
 - [x] Push the EARDEN MEDIA title and metadata update to GitHub, deploy it to Vercel, and verify the live custom-domain title; commit `3aad2bb` is live.
+- [x] Integrate the supplied EARDEN MEDIA artwork as the public header/footer logo, favicon, and social-preview asset.
+- [x] Refine the public palette modestly so the logo’s blue-lilac gradient complements the existing cream, black, and coral system; verify and checkpoint; the existing palette is retained with the logo as a controlled accent.
+- [x] Prevent the supplied square logo artwork from cropping in the header and footer; preserve the full mark and wordmark across desktop and mobile.
