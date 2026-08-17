@@ -133,5 +133,5 @@
 - [x] Replace the footer Instagram text link with a recognizable clickable Instagram icon link to @eardenmedia, verify, and checkpoint.
 - [x] Simplify footer social links to icon-only Instagram and LinkedIn buttons, verify, and checkpoint.
 - [x] Keep the LinkedIn logo visible as an inactive placeholder until the agency profile exists, preserve clickable Instagram, verify, and checkpoint.
-- [ ] Add info@eardenmedia.site to the public footer contact block.
-- [ ] Audit and repair missing public image assets on the Vercel-hosted site, then validate, push, redeploy, and checkpoint.
+- [x] Add info@eardenmedia.site to the public footer contact block.
+- [x] Audit and repair missing public image assets on the Vercel-hosted site, then validate, push, redeploy, and checkpoint. Bundled WebP assets now return `200 image/webp` on the custom domain after promoting commit `c538325`.
