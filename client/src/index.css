@@ -287,3 +287,13 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
   .public-nav > a:not(.public-nav-cta) { min-height: 25px; padding: 3px 0; justify-content: flex-end; }
   .public-nav-cta { width: 190px; min-width: 190px; margin: 8px 0 0; }
 }
+
+/* Final navigation placement: horizontal header, vertical footer Explore list. */
+@media (min-width: 801px) {
+  .public-header { min-height: 74px; height: 74px; align-items: center; padding-top: 0; padding-bottom: 0; }
+  .public-brand { margin-top: 0; }
+  .public-nav { flex-direction: row; align-items: center; gap: clamp(18px, 2.4vw, 32px); min-width: 0; }
+  .public-nav > a:not(.public-nav-cta) { min-height: 34px; padding: 8px 0; justify-content: initial; }
+  .public-nav-cta { width: auto; min-width: 164px; margin: 0 0 0 6px; }
+}
+.public-footer-column .footer-links { flex-direction: column; align-items: flex-start; gap: 9px; }

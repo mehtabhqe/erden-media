@@ -141,3 +141,5 @@
 - [ ] Push the verified public navigation changes to GitHub and deploy them to Vercel production; verify the live custom domain.
 - [x] Change the public header navigation links to a vertical stack for Services, Our work, About, Insights, and Contact; preserve the CTA, verify, and checkpoint.
 - [ ] Save a checkpoint specifically covering the vertical public header navigation stack after the verified desktop/mobile checks.
+- [x] Restore the header navigation to horizontal and stack only the footer Explore links vertically; verify and checkpoint.
+- [ ] Save a checkpoint covering the restored horizontal header and vertically stacked footer Explore links after the verified desktop/mobile checks.
