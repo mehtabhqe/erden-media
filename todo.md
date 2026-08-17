@@ -128,3 +128,5 @@
 - [x] Verify Vercel SPA routing: `/desk`, `/services`, and `/contact` load correctly on `https://www.eardenmedia.site`; the old `erden-media.vercel.app` alias itself is unassigned and returns `DEPLOYMENT_NOT_FOUND`.
 - [x] Validate the production build and route fallback locally; `dist/public/index.html` exists and the Vercel-compatible build passes.
 - [x] Confirm the configured Vercel domain shows `Valid Configuration` and `Production`, and verify the custom-domain `/desk` route loads the private sign-in screen.
+- [x] Verify the latest PublicSite footer branding edit from ERDEN MEDIA to EARDEN MEDIA, run checks, and save a checkpoint.
+- [x] Replace the public footer with a professional contact layout using the approved support email, phone, address, business hours, and Instagram handle; verify and checkpoint.

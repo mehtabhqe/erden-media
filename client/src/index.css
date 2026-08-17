@@ -246,3 +246,17 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .detail-story { max-width: 720px; border-top: 1px solid #17191c; padding-top: 2rem; }
 .detail-story h2 { font-size: clamp(2rem, 4vw, 4.5rem); line-height: .95; margin: 0 0 1.2rem; }
 .detail-story p { max-width: 62ch; line-height: 1.7; color: #5d6267; }
+
+/* Professional public footer contact system. */
+.public-footer { display: block; padding: 42px 32px 22px; }
+.public-footer-top { display: grid; grid-template-columns: 1.35fr .8fr 1.15fr 1fr; gap: 34px; padding-bottom: 36px; }
+.public-footer-brand { max-width: 300px; }
+.public-footer-brand .public-brand { display: inline-flex; }
+.public-footer-brand p { max-width: 260px; margin: 18px 0 0; color: #8c949b; font-size: 12px; line-height: 1.55; }
+.public-footer-column { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; min-width: 0; color: #a8afb5; font-size: 11px; line-height: 1.45; }
+.public-footer-column a { color: #dce0e3; text-decoration: none; overflow-wrap: anywhere; transition: color .18s var(--ease-out); }
+.public-footer-column a:hover { color: #e35d48; }
+.public-footer-label { margin-bottom: 4px; color: #e35d48; font: 700 9px/1.2 "Space Grotesk", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.public-footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 18px; border-top: 1px solid #34383b; color: #737c83; font-size: 10px; }
+@media (max-width: 800px) { .public-footer { padding: 34px 18px 20px; }.public-footer-top { grid-template-columns: 1fr 1fr; gap: 28px 20px; }.public-footer-brand { grid-column: 1 / -1; max-width: 360px; }.public-footer-bottom { flex-direction: column; gap: 7px; } }
+@media (max-width: 480px) { .public-footer-top { grid-template-columns: 1fr; gap: 24px; }.public-footer-brand { grid-column: auto; }.public-footer-column { gap: 7px; } }
