@@ -121,10 +121,10 @@
 - [x] Diagnose the custom-domain admin login error: the standalone Vercel handler returned `auth.me: null` and had no OAuth callback implementation.
 - [x] Correct the standalone Vercel handler with OAuth code exchange, user lookup, JWT session creation, cookie handling, and authenticated `auth.me`; existing API regression suite passes 10 tests.
 - [x] Redeploy and verify successful custom-domain authentication through the secure password fallback; production login and authenticated `auth.me` were verified on `www.eardenmedia.site` after deployment `e6720c1`.
-- [ ] Add `https://www.eardenmedia.site/api/oauth/callback` and `https://eardenmedia.site/api/oauth/callback` to the Manus OAuth application allowlist. Deferred: the user cannot access the Manus OAuth application settings; the password fallback is live instead.
-- [ ] Verify the custom-domain OAuth login after updating the allowlist. Deferred until the allowlist is accessible; OAuth remains optional and is not used by the desk entry.
-- [ ] Confirm whether `mehtabalh@gmail.com` is the owner identity accepted by the Manus OAuth session; do not use email as a substitute for the redirect allowlist. Account selection was observed, but OAuth owner acceptance was not completed.
-- [ ] Ensure the custom-domain callback is allowlisted before testing owner access. Deferred; password authentication now protects the desk independently.
+- [ ] Add `https://www.eardenmedia.site/api/oauth/callback` and `https://eardenmedia.site/api/oauth/callback` to the Manus OAuth application allowlist.
+- [ ] Verify the custom-domain OAuth login after updating the allowlist.
+- [ ] Confirm whether `mehtabalh@gmail.com` is the owner identity accepted by the Manus OAuth session; do not use email as a substitute for the redirect allowlist.
+- [ ] Ensure the custom-domain callback is allowlisted before testing owner access.
 - [x] Verify Vercel SPA routing: `/desk`, `/services`, and `/contact` load correctly on `https://www.eardenmedia.site`; the old `erden-media.vercel.app` alias itself is unassigned and returns `DEPLOYMENT_NOT_FOUND`.
 - [x] Validate the production build and route fallback locally; `dist/public/index.html` exists and the Vercel-compatible build passes.
 - [x] Confirm the configured Vercel domain shows `Valid Configuration` and `Production`, and verify the custom-domain `/desk` route loads the private sign-in screen.
@@ -155,5 +155,6 @@
 - [x] Commit the compact header-logo refinement to GitHub, deploy it to Vercel, and verify the live custom domain; GitHub main now includes the logo commits and Vercel deployment `d6c1206` is promoted.
 - [x] Save a checkpoint covering the compact header-logo deployment after the live custom-domain verification.
 - [x] Repair the missing EARDEN MEDIA logo on the live Vercel site by replacing the broken Manus storage reference with a stable Vercel-served asset; redeploy, verify, and checkpoint. Commit `f2f8515` was force-promoted and custom-domain assets return `image/webp`/`image/jpeg`.
-- [x] Replace the blocked Manus OAuth desk entry with a secure password-login fallback using the user-provided username and password secrets; preserve private route protection, add tests, deploy, and verify. Custom-domain login returned HTTP 200 and `auth.me` confirmed `role: admin` after promoting deployment `e6720c1`.
-- [x] Document that secure password authentication replaces Manus OAuth for `/desk`; live production verification on `https://www.eardenmedia.site` returned HTTP 200 and `auth.me` confirmed `role: admin` after deployment `e6720c1`.
+- [x] Replace the blocked Manus OAuth desk entry with a secure password-login fallback using the user-provided username and password secrets; preserve private route protection, add tests, deploy, and verify. Live custom-domain login and `auth.me` confirmed `role: admin` after deployment `e6720c1`.
+
+- [x] Remove dashboard demo records and connect the private Inquiries module to real MongoDB-backed public submissions; deployment `0dab1f7` was promoted to `www.eardenmedia.site`, where the dashboard shows truthful empty states and the inquiry inbox renders real submissions.

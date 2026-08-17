@@ -214,6 +214,13 @@ async function createInquiry(input: InquiryInput) {
   return { id: result.insertedId.toString(), ...record };
 }
 
+async function listInquiries() {
+  const client = await getMongoClient();
+  const database = env("MONGODB_DB_NAME") || "erden_media";
+  const rows = await client.db(database).collection("publicInquiries").find({}).sort({ createdAt: -1 }).toArray();
+  return rows.map(({ _id, ...row }) => ({ id: _id?.toString(), ...row }));
+}
+
 const inquirySchema = z.object({
   name: z.string().min(2).max(160),
   email: z.string().email(),
@@ -259,11 +266,19 @@ export default async function handler(req: Request, res: Response) {
       return;
     }
 
-    if (name === "auth.me") {
+        if (name === "auth.me") {
       trpcSuccess(res, await readSession(req));
       return;
     }
-
+    if (name === "agency.inquiries") {
+      const user = await readSession(req);
+      if (!user || user.role !== "admin") {
+        trpcError(res, 401, "Please login", "UNAUTHORIZED");
+        return;
+      }
+      trpcSuccess(res, await listInquiries());
+      return;
+    }
     if (name === "auth.logout") {
       res.setHeader("set-cookie", `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
       trpcSuccess(res, { success: true });
