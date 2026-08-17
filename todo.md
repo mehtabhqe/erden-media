@@ -144,3 +144,6 @@
 - [x] Restore the header navigation to horizontal and stack only the footer Explore links vertically; verify and checkpoint.
 - [x] Save a checkpoint covering the restored horizontal header and vertically stacked footer Explore links after the verified desktop/mobile checks.
 - [x] Commit the corrected horizontal-header and vertical-footer navigation state to GitHub, deploy the latest commit to Vercel, and verify the live custom domain; GitHub commit `755c0bc` is promoted to the custom production domain.
+- [x] Change the public browser title and metadata from AgencyOS to EARDEN MEDIA, verify the public preview title, and checkpoint.
+- [ ] Save a checkpoint specifically covering the EARDEN MEDIA title and metadata change after the verified local preview.
+- [ ] Commit and deploy the EARDEN MEDIA title metadata change to Vercel and verify the live custom-domain browser title.
