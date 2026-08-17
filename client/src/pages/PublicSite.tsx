@@ -23,10 +23,40 @@ const articles = [
 ] as const;
 
 const workItems = [
-  ["Illustrative project", "Northstar Café", "A warm launch system for a neighbourhood café: identity direction, landing page, menu storytelling, and a six-week social rhythm.", "Website · Social · Content"],
-  ["Illustrative project", "Asha / Founder brand", "A personal brand system for a founder who needed a sharper point of view across profile, speaking, and thought-leadership content.", "Personal brand · Content"],
-  ["Illustrative project", "Afterlight Sessions", "A music and culture campaign concept built around a clear visual world, creator seeding, and a press-ready story.", "Campaigns · PR · Creators"],
+  ["Brand presence", "Zumorrud", "A considered brand and digital presence built to make Zumorrud easier to understand, remember, and choose.", "Strategy · Website · Social"],
+  ["Growth system", "Neurovia Nexus Private Limited", "A clearer communications system for a company with ambitious work and a need to translate its value into a stronger public presence.", "Positioning · Content · Visibility"],
+  ["Retail presence", "Fowalk Footwear", "A footwear brand story designed to connect product, everyday style, and the confidence that makes a pair worth coming back to.", "Brand story · Social · Campaigns"],
 ] as const;
+
+const workStories: Record<string, { kicker: string; headline: string; overview: string; challenge: string; approach: string; outcome: string; services: string[] }> = {
+  Zumorrud: {
+    kicker: "Brand presence / Selected work",
+    headline: "Making Zumorrud easier to discover, understand, and remember.",
+    overview: "Zumorrud came to the work with the kind of opportunity many growing businesses know well: the work had its own character, but the public-facing story needed to catch up. Our role was to bring that character into a clearer, more consistent presence across the places where people first encounter the company.",
+    challenge: "The challenge was not simply to make the brand look better. It was to make the value of Zumorrud easier to read at a glance, while keeping the personality that makes the company feel human. The brand needed a sharper introduction, a more confident digital home, and content that could keep the conversation moving after the first impression.",
+    approach: "We shaped the work around a simple system: clarify the central story, give the visual language room to breathe, and create repeatable content directions rather than isolated posts. The website and social touchpoints were treated as one connected experience, with the same tone, hierarchy, and cues carrying through from the first scroll to the next conversation.",
+    outcome: "The result was a more coherent public presence for Zumorrud: clearer in its introduction, more consistent in its expression, and better prepared to turn attention into genuine interest. Instead of asking every touchpoint to explain the company from scratch, the new system gave the brand a recognisable way to show up and build familiarity over time.",
+    services: ["Brand positioning", "Website direction", "Social content system", "Ongoing visibility"],
+  },
+  "Neurovia Nexus Private Limited": {
+    kicker: "Growth system / Selected work",
+    headline: "Turning complex value into a public story people can follow.",
+    overview: "Neurovia Nexus Private Limited operates in a space where the work can be meaningful and ambitious, but the story can quickly become difficult to communicate. We worked on the layer between the company’s capability and the audience’s understanding: the language, structure, and visual direction that make a serious business feel clear without flattening what makes it different.",
+    challenge: "The central challenge was translation. Strong work can still be overlooked when the website, content, and public messaging speak in separate voices. Neurovia Nexus needed a clearer way to introduce its value, organise its ideas, and build confidence with the people it wanted to reach.",
+    approach: "We built the communications around a stronger point of view and a more deliberate rhythm. The work connected positioning with content planning, turned important ideas into accessible narratives, and created a foundation that could support future campaigns, partnerships, and conversations. Every piece was designed to answer the same question: why does this matter, and why now?",
+    outcome: "Neurovia Nexus left with a more legible public presence and a communications foundation that could grow with the company. The work made the brand easier to enter, easier to explain, and more equipped to build recognition through consistent, useful visibility rather than one-off noise.",
+    services: ["Positioning direction", "Narrative development", "Content strategy", "Public visibility"],
+  },
+  "Fowalk Footwear": {
+    kicker: "Retail presence / Selected work",
+    headline: "Giving Fowalk Footwear a story that feels as good as the product.",
+    overview: "Fowalk Footwear is in a category where people make quick decisions with their eyes before they make them with their feet. We worked on the story around the product: the visual world, the everyday context, and the small details that help a footwear brand feel relevant, dependable, and worth remembering.",
+    challenge: "The opportunity was to move beyond product-only communication. Footwear is functional, but the strongest brands also sell a feeling: confidence on the move, a dependable choice for everyday life, or a point of view about personal style. Fowalk needed a way to show both the product and the life around it.",
+    approach: "We developed a content and campaign direction that put the shoes into real moments instead of treating each product as an isolated catalogue item. Product storytelling, social formats, and campaign language worked together to make the brand more immediate, while keeping the focus on wearability, character, and the reasons someone would choose Fowalk again.",
+    outcome: "The result was a more inviting brand story for Fowalk Footwear: product-led, but never product-only. The company gained a clearer platform for social communication and campaigns, giving future launches and everyday content a consistent world to build from.",
+    services: ["Brand story", "Campaign direction", "Social content", "Product visibility"],
+  },
+};
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
@@ -77,6 +107,25 @@ function InteriorPage({ page, title }: { page: string; title: string }) {
   return <main className="public-interior"><div className="section-kicker">ERDEN MEDIA / {page.replaceAll("-", " ")}</div><h1>{title}</h1><p className="interior-lede">A media agency for brands, founders, artists, and teams who want to look sharper, sound clearer, and be seen by the right people.</p><div className="interior-grid">{items.map((item, index) => { const href = page === "blog" ? `/blog/${slugify(item)}` : page === "portfolio" ? `/portfolio/${slugify(item)}` : "/contact"; const description = page === "portfolio" ? workItems.find((work) => work[1] === item)?.[2] : page === "blog" ? articles.find((article) => article[1] === item)?.[2] : "See how we turn this part of your public presence into something clear, considered, and memorable."; return <div className="interior-card" key={item}><span>{String(index + 1).padStart(2, "0")}</span><h2>{item}</h2><p>{description}</p><Link href={page === "services" ? `/contact?service=${encodeURIComponent(item)}` : href} className="text-link">{page === "portfolio" ? "View project" : page === "blog" ? "Read note" : "Talk to us"} <ArrowRight size={14} /></Link></div>; })}{page === "services" && <div className="interior-card interior-card--custom"><span>07</span><h2>Something else in mind?</h2><p>Tell us what you are building, launching, or changing. We can shape a custom mix of strategy, design, content, social, and PR around it.</p><Link href="/contact?service=Custom service" className="text-link">Build a custom service <ArrowRight size={14} /></Link></div>}</div></main>;
 }
 
-function WorkDetailPage({ slug }: { slug: string }) { const work = workItems.find((item) => slugify(item[1]) === slug) || workItems[0]; return <main className="public-interior detail-page"><div className="section-kicker">ERDEN MEDIA / ILLUSTRATIVE WORK</div><h1>{work[1]}</h1><p className="interior-lede">{work[2]}</p><div className="detail-meta"><span>{work[0]}</span><span>{work[3]}</span></div><div className="detail-story"><h2>Built around a clear point of view.</h2><p>This illustrative project shows how Erden Media brings together strategy, design, content, social, and PR. The structure is intentional: one strong idea, expressed consistently across the places people meet the brand.</p><Link href="/contact" className="public-button public-button--dark">Start a similar project <ArrowRight size={15} /></Link></div></main>; }
+function WorkDetailPage({ slug }: { slug: string }) {
+  const work = workItems.find((item) => slugify(item[1]) === slug) || workItems[0];
+  const story = workStories[work[1]] || workStories.Zumorrud;
+  return <main className="public-interior detail-page">
+    <div className="section-kicker">ERDEN MEDIA / {story.kicker}</div>
+    <h1>{story.headline}</h1>
+    <p className="interior-lede">{story.overview}</p>
+    <div className="detail-meta"><span>{work[0]}</span><span>{work[3]}</span></div>
+    <div className="detail-story">
+      <h2>The brief</h2>
+      <p>{story.challenge}</p>
+      <h2>The approach</h2>
+      <p>{story.approach}</p>
+      <h2>Where it landed</h2>
+      <p>{story.outcome}</p>
+      <div className="detail-services"><span>Engagement focus</span>{story.services.map((service) => <strong key={service}>{service}</strong>)}</div>
+      <Link href="/contact" className="public-button public-button--dark">Start a similar project <ArrowRight size={15} /></Link>
+    </div>
+  </main>;
+}
 
 function ArticleDetailPage({ slug }: { slug: string }) { const article = articles.find((item) => slugify(item[1]) === slug) || articles[0]; return <main className="public-interior detail-page"><div className="section-kicker">ERDEN MEDIA / {article[0]}</div><h1>{article[1]}</h1><p className="interior-lede">{article[2]}</p><div className="detail-story"><h2>Start with the thing only you can say.</h2><p>A recognisable presence is rarely the result of posting more. It comes from knowing what you stand for, who it is for, and how to repeat the idea with enough care that people begin to remember it.</p><p>For brands, founders, artists, and creators, that usually means aligning the website, profile, content rhythm, and public conversations around one honest point of view.</p><Link href="/contact" className="text-link">Talk to Erden Media <ArrowRight size={14} /></Link></div></main>; }

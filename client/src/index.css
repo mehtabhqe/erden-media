@@ -327,3 +327,9 @@ h1 em::after { content: ""; position: absolute; left: 2px; right: -8px; height: 
 .inquiry-contact a, .inquiry-contact span { display: inline-flex; align-items: center; gap: .4rem; color: inherit; overflow-wrap: anywhere; }
 .inquiry-message { min-height: 3.2rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 720px) { .inquiry-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } .inquiry-card-top select { min-width: 6.5rem; } }
+
+.detail-services { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin: 2.2rem 0; padding: 1rem 0; border-top: 1px solid #d7d9dc; border-bottom: 1px solid #d7d9dc; }
+.detail-services span { width: 100%; color: #6c7378; font: 700 .68rem "Space Grotesk", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.detail-services strong { border: 1px solid #17191c; padding: .5rem .7rem; font-size: .74rem; font-weight: 600; }
+.detail-story .public-button { margin-top: 1.2rem; }
+@media (max-width: 520px) { .detail-meta { gap: .45rem; } .detail-meta span, .detail-services strong { font-size: .66rem; } }
