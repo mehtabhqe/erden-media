@@ -159,4 +159,4 @@
 
 - [x] Remove dashboard demo records and connect the private Inquiries module to real MongoDB-backed public submissions; deployment `0dab1f7` was promoted to `www.eardenmedia.site`, where the dashboard shows truthful empty states and the inquiry inbox renders real submissions.
 - [x] Clean clearly test-looking inquiry records from MongoDB while preserving legitimate-looking submissions; removed 8 approved records including repeated API verification entries and obvious test identities/emails, then verified the live inbox now shows 5 preserved submissions.
-- [ ] Add a first-class admin inbox for MongoDB-backed public inquiries with dashboard counts, full contact details, workflow status updates, and visibility for new activity/registrations where persisted data exists; add tests and verify live.
+- [x] Add a first-class admin inbox for MongoDB-backed public inquiries with dashboard counts, full contact details, workflow status updates, and visibility for new activity/registrations where persisted data exists; add tests and verify live. TypeScript, 12 Vitest tests, and the Vercel-compatible build pass; checkpoint `e0318ffb` contains the implementation.
