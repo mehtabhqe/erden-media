@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /desk
+Disallow: /crm
+Disallow: /clients
+Disallow: /campaigns
+Disallow: /social
+Disallow: /content
+Disallow: /tasks
+Disallow: /calendar
+Disallow: /pr-media
+Disallow: /influencers
+Disallow: /analytics
+Disallow: /reports
+Disallow: /invoices
+Disallow: /files
+Disallow: /messages
+Disallow: /settings
+Disallow: /inquiries
+
+Sitemap: https://www.eardenmedia.site/sitemap.xml

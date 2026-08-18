@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowRight, ChevronDown, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { trpc } from "@/lib/trpc";
@@ -101,6 +101,62 @@ export default function PublicSite({ page = "home", slug }: { page?: string; slu
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const isHome = page === "home";
+
+  useEffect(() => {
+    const articleTitle = slug ? Object.keys(articleStories).find((title) => slugify(title) === slug) : undefined;
+    const workTitle = slug ? Object.keys(workStories).find((title) => slugify(title) === slug) : undefined;
+    const meta = articleTitle
+      ? { title: `${articleTitle} | EARDEN MEDIA`, description: articleStories[articleTitle].intro, path: `/blog/${slug}` }
+      : workTitle
+        ? { title: `${workStories[workTitle].headline} | EARDEN MEDIA`, description: workStories[workTitle].overview, path: `/portfolio/${slug}` }
+        : {
+            home: { title: "EARDEN MEDIA — Media Agency for Brand, Social & PR", description: "EARDEN MEDIA helps ambitious people and brands build sharper identities, stronger content, and meaningful visibility.", path: "/" },
+            services: { title: "Media Agency Services | EARDEN MEDIA", description: "Websites, personal branding, social media management, content, PR, creator campaigns, and brand direction from EARDEN MEDIA.", path: "/services" },
+            portfolio: { title: "Our Work | EARDEN MEDIA", description: "Explore selected EARDEN MEDIA work across brand presence, websites, social content, campaigns, and visibility.", path: "/portfolio" },
+            about: { title: "About EARDEN MEDIA | Ideas, Identity & Visibility", description: "Discover why EARDEN MEDIA exists and how we help good work earn a real chance to be seen.", path: "/about" },
+            blog: { title: "Insights for Brands, Creators & Businesses | EARDEN MEDIA", description: "Story-led notes on online presence, social media, websites, PR, content systems, and focused brand direction.", path: "/blog" },
+            contact: { title: "Start a Project | Contact EARDEN MEDIA", description: "Tell EARDEN MEDIA what you are building and start a conversation about your brand, website, social, content, or PR.", path: "/contact" },
+            roi: { title: "ROI Calculator | EARDEN MEDIA", description: "Use the EARDEN MEDIA ROI calculator to think through the value of stronger brand, content, and visibility systems.", path: "/tools/roi-calculator" },
+            "free-audit": { title: "Free Brand & Presence Audit | EARDEN MEDIA", description: "Request a practical audit of your website, social presence, content, and brand visibility from EARDEN MEDIA.", path: "/free-audit" },
+          }[page] || { title: "EARDEN MEDIA — Media Agency", description: "Ideas, identity, and visibility for people and brands with something to say.", path: "/" };
+    const canonical = `https://www.eardenmedia.site${meta.path}`;
+    document.title = meta.title;
+    const setMeta = (selector: string, attribute: string, value: string) => {
+      let element = document.head.querySelector(selector) as HTMLMetaElement | null;
+      if (!element) { element = document.createElement("meta"); document.head.appendChild(element); }
+      element.setAttribute(attribute, value);
+    };
+    setMeta('meta[name="description"]', "name", "description");
+    setMeta('meta[name="description"]', "content", meta.description);
+    setMeta('meta[property="og:title"]', "property", "og:title");
+    setMeta('meta[property="og:title"]', "content", meta.title);
+    setMeta('meta[property="og:description"]', "property", "og:description");
+    setMeta('meta[property="og:description"]', "content", meta.description);
+    setMeta('meta[property="og:url"]', "property", "og:url");
+    setMeta('meta[property="og:url"]', "content", canonical);
+    setMeta('meta[name="twitter:title"]', "name", "twitter:title");
+    setMeta('meta[name="twitter:title"]', "content", meta.title);
+    setMeta('meta[name="twitter:description"]', "name", "twitter:description");
+    setMeta('meta[name="twitter:description"]', "content", meta.description);
+    let link = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+    link.href = canonical;
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "EARDEN MEDIA",
+      url: "https://www.eardenmedia.site/",
+      logo: "https://www.eardenmedia.site/assets/earden-media-logo.webp",
+      email: "support@eardenmedia.site",
+      telephone: "+91 9864-382-265",
+      address: { "@type": "PostalAddress", addressLocality: "Nagaon", addressRegion: "Assam", addressCountry: "IN" },
+      areaServed: "India",
+      serviceType: ["Websites", "Personal branding", "Social media management", "Public relations", "Content strategy", "Influencer campaigns"],
+    };
+    let schema = document.head.querySelector('script[type="application/ld+json"]') as HTMLScriptElement | null;
+    if (!schema) { schema = document.createElement("script"); schema.type = "application/ld+json"; document.head.appendChild(schema); }
+    schema.textContent = JSON.stringify(structuredData);
+  }, [page, slug]);
   const title = page === "services" ? "Ideas, identity, and visibility — made to move." : page === "portfolio" ? "Work that gives good brands somewhere to go." : page === "case-studies" ? "The thinking behind the work." : page === "blog" ? "Notes on brands, culture, and being seen." : page === "about" ? "A media agency for people with something to say." : page === "roi" ? "Build a presence that earns its place." : page === "contact" ? "Let’s make your next move visible." : page === "free-audit" ? "Find the gaps in your public presence." : "Build a presence people remember.";
 
   return <div className="public-site">
