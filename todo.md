@@ -171,3 +171,5 @@
 - [x] Improve favicon compatibility for search-engine display by auditing current assets, adding standard favicon variants and metadata, validating the production build, and saving a checkpoint.
 - [x] Commit and push the verified favicon compatibility update to the connected production branch, then verify the production favicon endpoints and document Google recrawl expectations.
 - [x] Replace every public-site logo and favicon reference with the supplied green EARDEN MEDIA mark, validate the complete site, push the changes, deploy them, and verify production.
+- [ ] Audit Google’s indexed favicon/search appearance for Thinkoria, run a quick live performance and technical SEO check on the deployed site, and verify all meta and social-preview image references use the new logo.
+- [ ] Repair production favicon variant routing so /favicon-48x48.png, /favicon-96x96.png, /apple-touch-icon.png, and the high-resolution logo endpoint return actual image content instead of the SPA HTML fallback; reverify social-preview image and favicon compatibility.
