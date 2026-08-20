@@ -40,7 +40,7 @@ export default function UtilityPage({ page }: { page: keyof typeof config }) {
 
   return (
     <div className="public-site utility-page">
-      <header className="public-header"><Link href="/" className="public-brand"><span className="public-brand-mark">EM</span><span>EARDEN MEDIA</span></Link><Link href="/desk" className="public-nav-cta">Back to desk <ArrowRight size={14} /></Link></header>
+      <header className="public-header"><Link href="/" className="public-brand"><img className="public-logo-image" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663796990363/lStsdmJWPinEeWQc.webp" alt="EARDEN MEDIA" /></Link><Link href="/desk" className="public-nav-cta">Back to desk <ArrowRight size={14} /></Link></header>
       <main className="public-interior">
         <div className="section-kicker">AgencyOS / {item.label}</div>
         <div className="utility-heading"><Icon size={30} /><h1>{item.title}</h1></div>
@@ -63,7 +63,7 @@ export default function UtilityPage({ page }: { page: keyof typeof config }) {
           }) : rows.map((row, index) => <div className="interior-card" key={row}><span>{String(index + 1).padStart(2, "0")}</span><h2>{row}</h2><p>Organize this part of the operating layer with the same clear, client-aware structure as the rest of the workspace.</p><Link href="/desk" className="text-link">Open the desk <ArrowRight size={14} /></Link></div>)}
         </div>
       </main>
-      <footer className="public-footer"><div className="public-brand"><span className="public-brand-mark">EM</span><span>EARDEN MEDIA</span></div><span>Internal workspace</span></footer>
+      <footer className="public-footer"><div className="public-brand"><img className="public-logo-image public-logo-image--footer" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663796990363/lStsdmJWPinEeWQc.webp" alt="EARDEN MEDIA" /></div><span>Internal workspace</span></footer>
     </div>
   );
 }
