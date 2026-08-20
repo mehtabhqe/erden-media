@@ -167,3 +167,5 @@
 - [ ] Push and deploy the complete verified EARDEN MEDIA website state, including Our Work case studies, the expanded About narrative, all six Insights notes, branding, footer, and related verified changes; verify the live main site.
 - [ ] Configure the apex domain eardenmedia.site to resolve to the Vercel production site and redirect cleanly to www.eardenmedia.site; verify both hostnames and document any DNS action required.
 - [x] Optimize EARDEN MEDIA public-site SEO across metadata, page titles and descriptions, headings, structured data, canonical URLs, robots/sitemap crawlability, accessibility signals, and verification; preserve the current visual identity and save a checkpoint.
+- [x] Create and validate a reusable Manus skill capturing the agency website content, public inquiry/admin workflow, Vercel/domain deployment, and technical SEO process; deliver the SKILL.md package to the user.
+- [x] Improve favicon compatibility for search-engine display by auditing current assets, adding standard favicon variants and metadata, validating the production build, and saving a checkpoint.
