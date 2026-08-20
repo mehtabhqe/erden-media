@@ -169,3 +169,4 @@
 - [x] Optimize EARDEN MEDIA public-site SEO across metadata, page titles and descriptions, headings, structured data, canonical URLs, robots/sitemap crawlability, accessibility signals, and verification; preserve the current visual identity and save a checkpoint.
 - [x] Create and validate a reusable Manus skill capturing the agency website content, public inquiry/admin workflow, Vercel/domain deployment, and technical SEO process; deliver the SKILL.md package to the user.
 - [x] Improve favicon compatibility for search-engine display by auditing current assets, adding standard favicon variants and metadata, validating the production build, and saving a checkpoint.
+- [ ] Commit and push the verified favicon compatibility update to the connected production branch, then verify the production favicon endpoints and document Google recrawl expectations.
